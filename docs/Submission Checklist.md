@@ -1,0 +1,26 @@
+# Submission Checklist
+
+- [x] FR-01 automation: at least 12 cases, three browsers.
+- [x] FR-11 automation: at least 12 cases, three browsers.
+- [x] FR-14 automation: at least 12 cases, three browsers.
+- [x] External JSON data and at least three assertion patterns.
+- [x] HTML reports with student ID and ISO timestamp.
+- [x] Main Report in Markdown.
+- [x] Main Report PDF generated and visually reviewed.
+- [x] AI Audit Report in Markdown.
+- [x] AI Audit Report PDF generated and visually reviewed.
+- [x] AI Critique in Markdown, 200–300 words.
+- [x] AI Critique PDF generated and visually reviewed.
+- [x] Git commit log text file.
+- [x] Eight commits that change test scripts.
+- [x] Bug report and screenshots prepared.
+- [ ] Authenticate GitHub and create nine Issues with screenshots.
+- [x] Agent Skill created and validated.
+- [ ] Record Agent Skill demonstration.
+- [ ] Record unlisted YouTube video, minimum five minutes, Vietnamese narration.
+- [ ] Show face-cam or `whoami` and `hostname` in the video.
+- [ ] Add video URL to README and reports.
+- [ ] Push final commits to the public GitHub repository.
+- [ ] Recalculate self-assessment and rename ZIP accordingly.
+- [ ] Export ZIP and verify every required file is included.
+- [ ] Submit to Moodle before the deadline.

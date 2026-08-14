@@ -1,0 +1,8 @@
+4d4fdd2 2026-08-14T19:01:09+07:00 test(fr01): add data-driven registration automation
+570603f 2026-08-14T19:30:34+07:00 test(fr11): cover order history access and isolation
+bc0b6c8 2026-08-14T19:31:59+07:00 test(fr11): verify order statuses and currency format
+57297df 2026-08-14T19:34:22+07:00 test(fr11): add boundary coverage and execution report
+b94db66 2026-08-14T19:36:54+07:00 test(fr14): cover category access and core operations
+fb04aed 2026-08-14T19:38:25+07:00 test(fr14): expose category validation and deletion defects
+73faecf 2026-08-14T19:40:13+07:00 test(fr14): add boundary coverage and execution report
+d913bfa 2026-08-14T19:43:06+07:00 test: enforce suite completeness and archive FR01 report
