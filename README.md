@@ -27,6 +27,7 @@
 
 - Feature–browser runs: **9**
 - Distinct bugs documented: **9**
+- GitHub Issues: [#1–#9](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues)
 - Test-script commits counted: **8**
 - Demo video: **TODO – add unlisted YouTube URL after recording**
 - Public repository: <https://github.com/luanthuco11/23KTPM4-KTPM-HW4>

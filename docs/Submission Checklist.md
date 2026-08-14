@@ -14,13 +14,13 @@
 - [x] Git commit log text file.
 - [x] Eight commits that change test scripts.
 - [x] Bug report and screenshots prepared.
-- [ ] Authenticate GitHub and create nine Issues with screenshots.
+- [x] Authenticate GitHub and create nine Issues with screenshots.
 - [x] Agent Skill created and validated.
 - [ ] Record Agent Skill demonstration.
 - [ ] Record unlisted YouTube video, minimum five minutes, Vietnamese narration.
 - [ ] Show face-cam or `whoami` and `hostname` in the video.
 - [ ] Add video URL to README and reports.
-- [ ] Push final commits to the public GitHub repository.
+- [x] Push automation, reports, PDFs, evidence, and Agent Skill to the public GitHub repository.
 - [ ] Recalculate self-assessment and rename ZIP accordingly.
 - [ ] Export ZIP and verify every required file is included.
 - [ ] Submit to Moodle before the deadline.

@@ -1,17 +1,17 @@
-# GitHub Issue Drafts
+# GitHub Issues
 
-The GitHub CLI token is currently invalid. Create nine Issues manually after authentication, using the titles and matching sections from [Bug Report.md](Bug%20Report.md).
+All nine Issues were created on 2026-08-14 with test IDs, reproduction steps, expected and actual behavior, feature/severity labels, and report screenshots.
 
-| Issue title | Suggested labels | Screenshot to attach |
+| Issue | Labels | Evidence |
 |---|---|---|
-| `[FR-01] Valid special-character passwords are rejected` | `bug`, `FR-01`, `high` | `bug-evidence/fr01-report-summary.png` |
-| `[FR-01] Whitespace-only names are accepted` | `bug`, `FR-01`, `medium` | `bug-evidence/fr01-report-summary.png` |
-| `[FR-01] Invalid email formats are accepted` | `bug`, `FR-01`, `high` | `bug-evidence/fr01-report-summary.png` |
-| `[FR-11] Order total uses a non-Vietnamese thousands separator` | `bug`, `FR-11`, `low` | `bug-evidence/fr11-report-summary.png` |
-| `[FR-14] Empty and whitespace category names are accepted` | `bug`, `FR-14`, `medium` | `bug-evidence/fr14-report-summary.png` |
-| `[FR-14] Duplicate category names are accepted` | `bug`, `FR-14`, `medium` | `bug-evidence/fr14-report-summary.png` |
-| `[FR-14] Referenced categories can be deleted` | `bug`, `FR-14`, `high` | `bug-evidence/fr14-report-summary.png` |
-| `[FR-14] Deleting a nonexistent category returns success` | `bug`, `FR-14`, `medium` | `bug-evidence/fr14-report-summary.png` |
-| `[FR-14] Normal users can create categories through the admin API` | `bug`, `FR-14`, `critical` | `bug-evidence/fr14-report-summary.png` |
+| [#1 – Valid special-character passwords are rejected](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/1) | `bug`, `FR-01`, `high` | `bug-evidence/fr01-report-summary.png` |
+| [#2 – Whitespace-only names are accepted](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/2) | `bug`, `FR-01`, `medium` | `bug-evidence/fr01-report-summary.png` |
+| [#3 – Invalid email formats are accepted](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/3) | `bug`, `FR-01`, `high` | `bug-evidence/fr01-report-summary.png` |
+| [#4 – Order total uses a non-Vietnamese thousands separator](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/4) | `bug`, `FR-11`, `low` | `bug-evidence/fr11-report-summary.png` |
+| [#5 – Empty and whitespace category names are accepted](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/5) | `bug`, `FR-14`, `medium` | `bug-evidence/fr14-report-summary.png` |
+| [#6 – Duplicate category names are accepted](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/6) | `bug`, `FR-14`, `medium` | `bug-evidence/fr14-report-summary.png` |
+| [#7 – Referenced categories can be deleted](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/7) | `bug`, `FR-14`, `high` | `bug-evidence/fr14-report-summary.png` |
+| [#8 – Deleting a nonexistent category returns success](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/8) | `bug`, `FR-14`, `medium` | `bug-evidence/fr14-report-summary.png` |
+| [#9 – Normal users can create categories through the admin API](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues/9) | `bug`, `FR-14`, `critical` | `bug-evidence/fr14-report-summary.png` |
 
-Each Issue body should copy the corresponding bug section, include expected versus actual behavior, list the test ID, and attach the indicated PNG.
+The reusable Issue bodies are retained in [`docs/github-issues`](github-issues/).
