@@ -1,0 +1,26 @@
+[
+  {
+    "id": "TC_CAT_01",
+    "title": "thêm danh mục thành công với tên hợp lệ",
+    "type": "create-valid",
+    "name": "Thiết bị điện tử {{unique}}"
+  },
+  {
+    "id": "TC_CAT_04",
+    "title": "hiển thị đầy đủ danh sách và tiêu đề cột",
+    "type": "list-categories",
+    "categoryCount": 3
+  },
+  {
+    "id": "TC_CAT_05",
+    "title": "xóa thành công danh mục không có sản phẩm",
+    "type": "delete-empty",
+    "name": "Danh mục rỗng {{unique}}"
+  },
+  {
+    "id": "TC_CAT_09",
+    "title": "từ chối người dùng thường tạo danh mục",
+    "type": "reject-non-admin",
+    "name": "Không được phép {{unique}}"
+  }
+]

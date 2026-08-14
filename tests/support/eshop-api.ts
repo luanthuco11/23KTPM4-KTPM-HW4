@@ -101,3 +101,26 @@ export async function setOrderStatus(
     expect(response.ok()).toBe(true);
   }
 }
+
+export async function createCategory(
+  request: APIRequestContext,
+  token: string,
+  name: string,
+) {
+  const response = await request.post(`${apiBaseUrl}/api/categories`, {
+    headers: { Authorization: `Bearer ${token}` },
+    data: { name },
+  });
+  expect(response.ok()).toBe(true);
+  return (await response.json()).id as number;
+}
+
+export async function deleteCategory(
+  request: APIRequestContext,
+  token: string,
+  categoryId: number,
+) {
+  return request.delete(`${apiBaseUrl}/api/categories/${categoryId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
