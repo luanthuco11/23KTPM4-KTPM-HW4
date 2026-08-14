@@ -41,6 +41,13 @@ const orderHistoryCases = JSON.parse(
 ) as OrderHistoryCase[];
 
 test.describe('FR-11 — Xem lịch sử đơn hàng', () => {
+  test.beforeAll(() => {
+    expect(orderHistoryCases.length).toBeGreaterThanOrEqual(12);
+    expect(new Set(orderHistoryCases.map(({ id }) => id)).size).toBe(
+      orderHistoryCases.length,
+    );
+  });
+
   for (const [index, testCase] of orderHistoryCases.entries()) {
     test(`${testCase.id} — ${testCase.title}`, async ({ page, request }, testInfo) => {
       const uniqueValue = `${testInfo.project.name}-${Date.now()}-${testInfo.workerIndex}-${index}`;

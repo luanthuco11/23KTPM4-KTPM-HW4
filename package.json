@@ -6,6 +6,8 @@
   "scripts": {
     "test": "playwright test",
     "test:fr01": "playwright test tests/specs/fr01-registration.spec.ts",
+    "test:fr11": "playwright test tests/specs/fr11-order-history.spec.ts",
+    "test:fr14": "playwright test tests/specs/fr14-category-management.spec.ts",
     "test:chromium": "playwright test --project=chromium",
     "test:firefox": "playwright test --project=firefox",
     "test:webkit": "playwright test --project=webkit",

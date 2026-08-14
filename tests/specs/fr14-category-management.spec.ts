@@ -39,6 +39,13 @@ function materialize(value: string, uniqueValue: string) {
 }
 
 test.describe('FR-14 — Quản lý danh mục', () => {
+  test.beforeAll(() => {
+    expect(categoryCases.length).toBeGreaterThanOrEqual(12);
+    expect(new Set(categoryCases.map(({ id }) => id)).size).toBe(
+      categoryCases.length,
+    );
+  });
+
   for (const [index, testCase] of categoryCases.entries()) {
     test(`${testCase.id} — ${testCase.title}`, async ({ page, request }, testInfo) => {
       const uniqueValue = `${testInfo.project.name}-${Date.now()}-${testInfo.workerIndex}-${index}`;

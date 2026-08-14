@@ -32,6 +32,13 @@ function materialize(value: string, uniqueValue: string) {
 }
 
 test.describe('FR-01 — Đăng ký tài khoản', () => {
+  test.beforeAll(() => {
+    expect(registrationCases.length).toBeGreaterThanOrEqual(12);
+    expect(new Set(registrationCases.map(({ id }) => id)).size).toBe(
+      registrationCases.length,
+    );
+  });
+
   for (const [index, testCase] of registrationCases.entries()) {
     test(`${testCase.id} — ${testCase.title}`, async ({ page }, testInfo) => {
       const registrationPage = new RegistrationPage(page);
