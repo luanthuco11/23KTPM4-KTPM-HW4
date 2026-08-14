@@ -124,3 +124,21 @@ export async function deleteCategory(
     headers: { Authorization: `Bearer ${token}` },
   });
 }
+
+export async function createProductForCategory(
+  request: APIRequestContext,
+  categoryId: number,
+  uniqueValue: string,
+) {
+  const response = await request.post(`${apiBaseUrl}/api/products`, {
+    data: {
+      name: `HW04 Product ${uniqueValue}`,
+      price: 100_000,
+      description: 'Sản phẩm dùng để kiểm thử ràng buộc danh mục',
+      imageUrl: 'https://placehold.co/300',
+      category_id: categoryId,
+    },
+  });
+  expect(response.ok()).toBe(true);
+  return (await response.json()).id as number;
+}

@@ -4,16 +4,28 @@ import path from 'node:path';
 import { CategoryManagementPage } from '../pages/category-management.page';
 import {
   createCategory,
+  createProductForCategory,
   createTestUser,
+  deleteCategory,
   loginAsAdmin,
 } from '../support/eshop-api';
 
 type CategoryCase = {
   id: string;
   title: string;
-  type: 'create-valid' | 'list-categories' | 'delete-empty' | 'reject-non-admin';
+  type:
+    | 'create-valid'
+    | 'list-categories'
+    | 'delete-empty'
+    | 'reject-non-admin'
+    | 'reject-invalid-name'
+    | 'reject-delete-referenced'
+    | 'reject-delete-missing'
+    | 'reject-duplicate';
   name?: string;
   categoryCount?: number;
+  categoryId?: number;
+  expectedStatus?: number;
 };
 
 const dataPath = path.resolve(process.cwd(), 'tests/data/categories.json');
@@ -60,7 +72,44 @@ test.describe('FR-14 — Quản lý danh mục', () => {
         return;
       }
 
+      if (testCase.type === 'reject-delete-missing') {
+        const response = await deleteCategory(
+          request,
+          adminToken,
+          testCase.categoryId!,
+        );
+        expect(response.status()).toBe(testCase.expectedStatus);
+        return;
+      }
+
+      if (testCase.type === 'reject-delete-referenced') {
+        const categoryId = await createCategory(
+          request,
+          adminToken,
+          categoryName,
+        );
+        await createProductForCategory(request, categoryId, uniqueValue);
+        const response = await deleteCategory(request, adminToken, categoryId);
+        expect(response.status()).toBe(testCase.expectedStatus);
+        return;
+      }
+
+      if (testCase.type === 'reject-duplicate') {
+        await createCategory(request, adminToken, categoryName);
+        await categoryPage.goto(adminToken);
+        const response = await categoryPage.addCategory(categoryName);
+        expect(response.status()).toBe(testCase.expectedStatus);
+        return;
+      }
+
       await categoryPage.goto(adminToken);
+
+      if (testCase.type === 'reject-invalid-name') {
+        const response = await categoryPage.addCategory(categoryName);
+        expect(response.status()).toBe(testCase.expectedStatus);
+        await expect(categoryPage.nameInput).toHaveValue(categoryName);
+        return;
+      }
 
       if (testCase.type === 'create-valid') {
         const response = await categoryPage.addCategory(categoryName);
