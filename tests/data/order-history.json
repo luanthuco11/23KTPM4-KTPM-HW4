@@ -1,0 +1,25 @@
+[
+  {
+    "id": "TC_ORD_01",
+    "title": "hiển thị đầy đủ nhiều đơn hàng của người dùng",
+    "type": "multiple-orders",
+    "orderCount": 3
+  },
+  {
+    "id": "TC_ORD_02",
+    "title": "hiển thị empty state khi người dùng chưa có đơn hàng",
+    "type": "empty-state"
+  },
+  {
+    "id": "TC_ORD_03",
+    "title": "yêu cầu đăng nhập khi truy cập lịch sử đơn hàng",
+    "type": "unauthenticated"
+  },
+  {
+    "id": "TC_ORD_04",
+    "title": "không trả về đơn hàng của người dùng khác",
+    "type": "data-isolation",
+    "userAOrders": 2,
+    "userBOrders": 3
+  }
+]
