@@ -21,7 +21,10 @@ type OrderHistoryCase = {
     | 'unauthenticated'
     | 'data-isolation'
     | 'status-display'
-    | 'currency-format';
+    | 'currency-format'
+    | 'required-columns'
+    | 'single-order'
+    | 'amount-boundary';
   orderCount?: number;
   userAOrders?: number;
   userBOrders?: number;
@@ -93,6 +96,18 @@ test.describe('FR-11 — Xem lịch sử đơn hàng', () => {
         );
       }
 
+      if (
+        testCase.type === 'required-columns' ||
+        testCase.type === 'single-order' ||
+        testCase.type === 'amount-boundary'
+      ) {
+        targetOrderId = await createOrder(
+          request,
+          user.token,
+          testCase.totalAmount ?? 500_000,
+        );
+      }
+
       await orderHistoryPage.gotoAuthenticated(user.token);
 
       if (testCase.type === 'empty-state') {
@@ -112,6 +127,37 @@ test.describe('FR-11 — Xem lịch sử đơn hàng', () => {
       }
 
       if (testCase.type === 'currency-format') {
+        const row = orderHistoryPage.rowByOrderId(targetOrderId!);
+        await expect(row.locator('td').nth(2)).toHaveText(
+          testCase.expectedAmount!,
+        );
+        return;
+      }
+
+      if (testCase.type === 'required-columns') {
+        for (const columnName of [
+          'Mã ĐH',
+          'Ngày đặt',
+          'Tổng tiền',
+          'Trạng thái',
+        ]) {
+          await expect(
+            orderHistoryPage.table.getByRole('columnheader', {
+              name: columnName,
+              exact: true,
+            }),
+          ).toBeVisible();
+        }
+        return;
+      }
+
+      if (testCase.type === 'single-order') {
+        await expect(orderHistoryPage.rows).toHaveCount(1);
+        await expect(orderHistoryPage.rowByOrderId(targetOrderId!)).toBeVisible();
+        return;
+      }
+
+      if (testCase.type === 'amount-boundary') {
         const row = orderHistoryPage.rowByOrderId(targetOrderId!);
         await expect(row.locator('td').nth(2)).toHaveText(
           testCase.expectedAmount!,

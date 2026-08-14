@@ -68,5 +68,34 @@
     "type": "currency-format",
     "totalAmount": 1250000,
     "expectedAmount": "1.250.000 ₫"
+  },
+  {
+    "id": "TC_ORD_11",
+    "title": "hiển thị đủ bốn cột thông tin bắt buộc",
+    "type": "required-columns"
+  },
+  {
+    "id": "TC_BVA_ORD_01",
+    "title": "hiển thị empty state tại biên 0 đơn hàng",
+    "type": "empty-state"
+  },
+  {
+    "id": "TC_BVA_ORD_02",
+    "title": "hiển thị đúng một dòng tại biên 1 đơn hàng",
+    "type": "single-order"
+  },
+  {
+    "id": "TC_BVA_ORD_03",
+    "title": "hiển thị tổng tiền tại biên 0 đồng",
+    "type": "amount-boundary",
+    "totalAmount": 0,
+    "expectedAmount": "0 ₫"
+  },
+  {
+    "id": "TC_BVA_ORD_04",
+    "title": "hiển thị tổng tiền tại biên 1 đồng",
+    "type": "amount-boundary",
+    "totalAmount": 1,
+    "expectedAmount": "1 ₫"
   }
 ]
