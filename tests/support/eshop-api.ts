@@ -64,3 +64,40 @@ export async function getMyOrders(
   expect(response.ok()).toBe(true);
   return response.json();
 }
+
+export async function loginAsAdmin(request: APIRequestContext) {
+  const response = await request.post(`${apiBaseUrl}/api/login`, {
+    data: {
+      email: 'admin@eshop.com',
+      password: 'Admin123!',
+    },
+  });
+  expect(response.ok()).toBe(true);
+  return (await response.json()).token as string;
+}
+
+export async function setOrderStatus(
+  request: APIRequestContext,
+  adminToken: string,
+  orderId: number,
+  targetStatus: 'pending' | 'confirmed' | 'shipping' | 'delivered' | 'canceled',
+) {
+  const transitionPaths = {
+    pending: [],
+    confirmed: ['confirmed'],
+    shipping: ['confirmed', 'shipping'],
+    delivered: ['confirmed', 'shipping', 'delivered'],
+    canceled: ['canceled'],
+  } as const;
+
+  for (const status of transitionPaths[targetStatus]) {
+    const response = await request.put(
+      `${apiBaseUrl}/api/admin/orders/${orderId}/status`,
+      {
+        headers: { Authorization: `Bearer ${adminToken}` },
+        data: { status },
+      },
+    );
+    expect(response.ok()).toBe(true);
+  }
+}

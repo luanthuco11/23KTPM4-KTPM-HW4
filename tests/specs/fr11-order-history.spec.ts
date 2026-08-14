@@ -6,15 +6,30 @@ import {
   createOrder,
   createTestUser,
   getMyOrders,
+  loginAsAdmin,
+  setOrderStatus,
 } from '../support/eshop-api';
+
+type OrderStatus = 'pending' | 'confirmed' | 'shipping' | 'delivered' | 'canceled';
 
 type OrderHistoryCase = {
   id: string;
   title: string;
-  type: 'multiple-orders' | 'empty-state' | 'unauthenticated' | 'data-isolation';
+  type:
+    | 'multiple-orders'
+    | 'empty-state'
+    | 'unauthenticated'
+    | 'data-isolation'
+    | 'status-display'
+    | 'currency-format';
   orderCount?: number;
   userAOrders?: number;
   userBOrders?: number;
+  status?: OrderStatus;
+  expectedLabel?: string;
+  expectedStyle?: string;
+  totalAmount?: number;
+  expectedAmount?: string;
 };
 
 const dataPath = path.resolve(process.cwd(), 'tests/data/order-history.json');
@@ -58,11 +73,49 @@ test.describe('FR-11 — Xem lịch sử đơn hàng', () => {
         }
       }
 
+      let targetOrderId: number | undefined;
+      if (testCase.type === 'status-display') {
+        targetOrderId = await createOrder(request, user.token, 500_000);
+        const adminToken = await loginAsAdmin(request);
+        await setOrderStatus(
+          request,
+          adminToken,
+          targetOrderId,
+          testCase.status ?? 'pending',
+        );
+      }
+
+      if (testCase.type === 'currency-format') {
+        targetOrderId = await createOrder(
+          request,
+          user.token,
+          testCase.totalAmount ?? 0,
+        );
+      }
+
       await orderHistoryPage.gotoAuthenticated(user.token);
 
       if (testCase.type === 'empty-state') {
         await expect(orderHistoryPage.emptyState).toBeVisible();
         await expect(orderHistoryPage.table).toHaveCount(0);
+        return;
+      }
+
+      if (testCase.type === 'status-display') {
+        const row = orderHistoryPage.rowByOrderId(targetOrderId!);
+        const statusBadge = row.locator('td').nth(3).locator('span');
+        await expect(statusBadge).toHaveText(testCase.expectedLabel!);
+        await expect(statusBadge).toHaveClass(
+          new RegExp(`(?:^|\\s)${testCase.expectedStyle}(?:\\s|$)`),
+        );
+        return;
+      }
+
+      if (testCase.type === 'currency-format') {
+        const row = orderHistoryPage.rowByOrderId(targetOrderId!);
+        await expect(row.locator('td').nth(2)).toHaveText(
+          testCase.expectedAmount!,
+        );
         return;
       }
 

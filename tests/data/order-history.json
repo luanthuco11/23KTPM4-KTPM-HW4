@@ -21,5 +21,52 @@
     "type": "data-isolation",
     "userAOrders": 2,
     "userBOrders": 3
+  },
+  {
+    "id": "TC_ORD_05",
+    "title": "dịch và tô màu trạng thái pending",
+    "type": "status-display",
+    "status": "pending",
+    "expectedLabel": "Chờ xác nhận",
+    "expectedStyle": "bg-yellow-100"
+  },
+  {
+    "id": "TC_ORD_06",
+    "title": "dịch và tô màu trạng thái confirmed",
+    "type": "status-display",
+    "status": "confirmed",
+    "expectedLabel": "Đã xác nhận",
+    "expectedStyle": "bg-indigo-100"
+  },
+  {
+    "id": "TC_ORD_07",
+    "title": "dịch và tô màu trạng thái shipping",
+    "type": "status-display",
+    "status": "shipping",
+    "expectedLabel": "Đang giao",
+    "expectedStyle": "bg-blue-100"
+  },
+  {
+    "id": "TC_ORD_08",
+    "title": "dịch và tô màu trạng thái delivered",
+    "type": "status-display",
+    "status": "delivered",
+    "expectedLabel": "Đã giao",
+    "expectedStyle": "bg-green-100"
+  },
+  {
+    "id": "TC_ORD_09",
+    "title": "dịch và tô màu trạng thái canceled",
+    "type": "status-display",
+    "status": "canceled",
+    "expectedLabel": "Đã hủy",
+    "expectedStyle": "bg-red-100"
+  },
+  {
+    "id": "TC_ORD_10",
+    "title": "định dạng tổng tiền theo tiền tệ Việt Nam",
+    "type": "currency-format",
+    "totalAmount": 1250000,
+    "expectedAmount": "1.250.000 ₫"
   }
 ]
