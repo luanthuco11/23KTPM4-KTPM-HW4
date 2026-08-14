@@ -1,0 +1,98 @@
+[
+  {
+    "id": "TC_REG_01",
+    "title": "đăng ký thành công với dữ liệu hợp lệ",
+    "name": "Nguyễn Văn A",
+    "email": "valid-{{unique}}@example.com",
+    "password": "Pass123!",
+    "expectation": "success"
+  },
+  {
+    "id": "TC_REG_02",
+    "title": "từ chối họ tên rỗng",
+    "name": "",
+    "email": "empty-name-{{unique}}@example.com",
+    "password": "Pass123!",
+    "expectation": "required-name"
+  },
+  {
+    "id": "TC_REG_03",
+    "title": "từ chối họ tên chỉ chứa khoảng trắng",
+    "name": "   ",
+    "email": "blank-name-{{unique}}@example.com",
+    "password": "Pass123 ",
+    "expectation": "rejected"
+  },
+  {
+    "id": "TC_REG_04",
+    "title": "từ chối email rỗng",
+    "name": "Nguyễn Văn A",
+    "email": "",
+    "password": "Pass123!",
+    "expectation": "required-email"
+  },
+  {
+    "id": "TC_REG_05",
+    "title": "từ chối email thiếu ký tự @",
+    "name": "Nguyễn Văn A",
+    "email": "userexample.com",
+    "password": "Pass123 ",
+    "expectation": "rejected"
+  },
+  {
+    "id": "TC_REG_06",
+    "title": "từ chối email thiếu tên người dùng",
+    "name": "Nguyễn Văn A",
+    "email": "@example.com",
+    "password": "Pass123 ",
+    "expectation": "rejected"
+  },
+  {
+    "id": "TC_REG_07",
+    "title": "từ chối email thiếu tên miền",
+    "name": "Nguyễn Văn A",
+    "email": "user@",
+    "password": "Pass123 ",
+    "expectation": "rejected"
+  },
+  {
+    "id": "TC_REG_08",
+    "title": "từ chối email thiếu tên miền cấp cao",
+    "name": "Nguyễn Văn A",
+    "email": "user@domain",
+    "password": "Pass123 ",
+    "expectation": "rejected"
+  },
+  {
+    "id": "TC_REG_09",
+    "title": "từ chối email chứa khoảng trắng",
+    "name": "Nguyễn Văn A",
+    "email": "user name-{{unique}}@example.com",
+    "password": "Pass123 ",
+    "expectation": "rejected"
+  },
+  {
+    "id": "TC_REG_10",
+    "title": "từ chối mật khẩu ngắn hơn 8 ký tự",
+    "name": "Nguyễn Văn A",
+    "email": "short-password-{{unique}}@example.com",
+    "password": "Abc12!",
+    "expectation": "weak-password"
+  },
+  {
+    "id": "TC_REG_11",
+    "title": "từ chối mật khẩu thiếu chữ hoa",
+    "name": "Nguyễn Văn A",
+    "email": "no-uppercase-{{unique}}@example.com",
+    "password": "pass123!",
+    "expectation": "weak-password"
+  },
+  {
+    "id": "TC_BVA_01",
+    "title": "chấp nhận mật khẩu hợp lệ đúng biên 8 ký tự",
+    "name": "Nguyễn Văn B",
+    "email": "boundary-{{unique}}@example.com",
+    "password": "Abc1234!",
+    "expectation": "success"
+  }
+]
