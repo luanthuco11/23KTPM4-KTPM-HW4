@@ -57,5 +57,23 @@
     "title": "từ chối người dùng thường tạo danh mục",
     "type": "reject-non-admin",
     "name": "Không được phép {{unique}}"
+  },
+  {
+    "id": "TC_BVA_CAT_01",
+    "title": "chấp nhận tên danh mục đúng biên một ký tự",
+    "type": "single-character",
+    "name": "A"
+  },
+  {
+    "id": "TC_BVA_CAT_04",
+    "title": "hiển thị bảng rỗng tại biên không danh mục",
+    "type": "list-boundary",
+    "fixtureCount": 0
+  },
+  {
+    "id": "TC_BVA_CAT_05",
+    "title": "hiển thị đúng một dòng tại biên một danh mục",
+    "type": "list-boundary",
+    "fixtureCount": 1
   }
 ]

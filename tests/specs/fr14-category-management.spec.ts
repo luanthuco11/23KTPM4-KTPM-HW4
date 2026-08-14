@@ -21,11 +21,14 @@ type CategoryCase = {
     | 'reject-invalid-name'
     | 'reject-delete-referenced'
     | 'reject-delete-missing'
-    | 'reject-duplicate';
+    | 'reject-duplicate'
+    | 'single-character'
+    | 'list-boundary';
   name?: string;
   categoryCount?: number;
   categoryId?: number;
   expectedStatus?: number;
+  fixtureCount?: number;
 };
 
 const dataPath = path.resolve(process.cwd(), 'tests/data/categories.json');
@@ -42,6 +45,20 @@ test.describe('FR-14 — Quản lý danh mục', () => {
       const adminToken = await loginAsAdmin(request);
       const categoryPage = new CategoryManagementPage(page);
       const categoryName = materialize(testCase.name ?? '', uniqueValue);
+
+      if (testCase.type === 'list-boundary') {
+        const categoriesFixture = Array.from(
+          { length: testCase.fixtureCount ?? 0 },
+          (_, fixtureIndex) => ({
+            id: fixtureIndex + 1,
+            name: `Boundary Category ${fixtureIndex + 1}`,
+          }),
+        );
+        await categoryPage.goto(adminToken, categoriesFixture);
+        await expect(categoryPage.table).toBeVisible();
+        await expect(categoryPage.rows).toHaveCount(testCase.fixtureCount ?? 0);
+        return;
+      }
 
       if (testCase.type === 'reject-non-admin') {
         const user = await createTestUser(request, uniqueValue);
@@ -103,6 +120,17 @@ test.describe('FR-14 — Quản lý danh mục', () => {
       }
 
       await categoryPage.goto(adminToken);
+
+      if (testCase.type === 'single-character') {
+        const matchingNames = categoryPage.table.getByText(categoryName, {
+          exact: true,
+        });
+        const countBefore = await matchingNames.count();
+        const response = await categoryPage.addCategory(categoryName);
+        expect(response.ok()).toBe(true);
+        await expect(matchingNames).toHaveCount(countBefore + 1);
+        return;
+      }
 
       if (testCase.type === 'reject-invalid-name') {
         const response = await categoryPage.addCategory(categoryName);
