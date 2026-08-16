@@ -1,32 +1,32 @@
-# Automation Review Checklist
+# Checklist rà soát kiểm thử tự động
 
-## Test design
+## Thiết kế kiểm thử
 
-- At least 12 unique test IDs for the feature.
-- Positive, negative, boundary, and authorization/state cases where relevant.
-- One behavior per test and a clear expected result.
-- External JSON or CSV data; no inline test-case collection.
+- Có ít nhất 12 test ID duy nhất cho mỗi chức năng.
+- Bao phủ trường hợp hợp lệ, không hợp lệ, giá trị biên, phân quyền và trạng thái khi phù hợp.
+- Mỗi test chỉ kiểm tra một hành vi và có kết quả mong đợi rõ ràng.
+- Dùng dữ liệu JSON hoặc CSV bên ngoài; không khai báo tập test case trực tiếp trong file spec.
 
-## Implementation
+## Cài đặt
 
-- Page Object separates interaction from assertions.
-- Unique data prevents collisions between browsers and repeated runs.
-- Preconditions use supported UI/API behavior.
-- At least three assertion patterns are present.
-- No fixed sleep is used for application synchronization.
+- Page Object tách thao tác giao diện khỏi assertion.
+- Dữ liệu duy nhất ngăn xung đột giữa các trình duyệt và các lần chạy lặp lại.
+- Điều kiện trước được chuẩn bị bằng hành vi UI hoặc API được hỗ trợ.
+- Có ít nhất ba dạng assertion.
+- Không dùng thời gian chờ cố định để đồng bộ với ứng dụng.
 
-## Multi-browser evidence
+## Bằng chứng đa trình duyệt
 
-- Chromium, Firefox, and WebKit all execute the feature.
-- HTML report contains `Run by: <StudentID>` and an ISO timestamp.
-- Failure screenshot, trace, and video are retained.
-- Report is archived outside the transient `playwright-report` directory.
+- Chromium, Firefox và WebKit đều thực thi chức năng.
+- HTML report chứa `Run by: <MSSV>` và thời gian ISO.
+- Ảnh chụp màn hình, trace và video của test thất bại được giữ lại.
+- Report được lưu trữ bên ngoài thư mục tạm thời `playwright-report`.
 
-## Human review
+## Con người rà soát
 
-- Verify selectors are not unnecessarily positional.
-- Verify assertions fail for the intended reason.
-- Reproduce genuine defects consistently.
-- Explain what AI missed and why.
-- Restore the SUT database after a mutating run.
-- Record defects in Markdown and GitHub Issues.
+- Xác minh selector không phụ thuộc vị trí khi không cần thiết.
+- Xác minh assertion thất bại đúng nguyên nhân cần kiểm tra.
+- Tái hiện ổn định các lỗi hệ thống thực sự.
+- Giải thích AI đã bỏ sót điều gì và vì sao.
+- Khôi phục cơ sở dữ liệu của hệ thống sau lượt chạy làm thay đổi dữ liệu.
+- Ghi nhận lỗi trong Markdown và GitHub Issues.

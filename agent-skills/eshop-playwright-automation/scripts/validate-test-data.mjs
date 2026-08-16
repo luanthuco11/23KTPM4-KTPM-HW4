@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 const files = process.argv.slice(2);
 
 if (files.length === 0) {
-  console.error('Usage: node validate-test-data.mjs <file.json> [...]');
+  console.error('Cách dùng: node validate-test-data.mjs <file.json> [...]');
   process.exit(2);
 }
 
@@ -15,7 +15,7 @@ for (const file of files) {
   try {
     const cases = JSON.parse(await readFile(file, 'utf8'));
     if (!Array.isArray(cases)) {
-      throw new Error('root value must be an array');
+      throw new Error('giá trị gốc phải là một mảng');
     }
 
     const ids = cases.map((testCase) => testCase?.id);
@@ -27,14 +27,14 @@ for (const file of files) {
     if (cases.length < 12 || missingIds > 0 || duplicateCount > 0) {
       hasError = true;
       console.error(
-        `${file}: INVALID (cases=${cases.length}, missingIds=${missingIds}, duplicates=${duplicateCount})`,
+        `${file}: KHÔNG HỢP LỆ (số test=${cases.length}, thiếu ID=${missingIds}, trùng ID=${duplicateCount})`,
       );
     } else {
-      console.log(`${file}: OK (${cases.length} unique test cases)`);
+      console.log(`${file}: HỢP LỆ (${cases.length} test case có ID duy nhất)`);
     }
   } catch (error) {
     hasError = true;
-    console.error(`${file}: INVALID (${error.message})`);
+    console.error(`${file}: KHÔNG HỢP LỆ (${error.message})`);
   }
 }
 

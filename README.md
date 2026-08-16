@@ -29,7 +29,8 @@
 - Distinct bugs documented: **9**
 - GitHub Issues: [#1–#9](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues)
 - Test-script commits counted: **8**
-- Demo video: **TODO – add unlisted YouTube URL after recording**
+- Task 2 demo video: [YouTube – Unlisted](https://youtu.be/wVz2drOVd2E)
+- Agent Skill demo video: [YouTube – Unlisted](https://youtu.be/lPOh3j1v4oU)
 - Public repository: <https://github.com/luanthuco11/23KTPM4-KTPM-HW4>
 
 Failed assertions are retained when they consistently expose a genuine SUT defect. See [Bug Report](docs/Bug%20Report.md) and the archived HTML reports.
@@ -61,11 +62,11 @@ Playwright starts the backend, storefront, and admin frontend automatically when
 
 | No. | Criterion | Maximum | Self-assessed |
 |---:|---|---:|---:|
-| 1 | Task 1 – Feature A (FR-01) | 25 | 22 |
-| 2 | Task 1 – Feature B (FR-11) | 25 | 24 |
-| 3 | Task 1 – Feature C (FR-14) | 25 | 23 |
-| 4 | Task 2 – Demo video | 15 | 0 (pending student recording) |
-| 5 | Agent Skill | 10 | 7 (skill complete, demo pending) |
-|  | **Current total** | **100** | **76** |
+| 1 | Task 1 – Feature A (FR-01) | 25 | 25 |
+| 2 | Task 1 – Feature B (FR-11) | 25 | 25 |
+| 3 | Task 1 – Feature C (FR-14) | 25 | 25 |
+| 4 | Task 2 – Demo video | 15 | 15 |
+| 5 | Agent Skill | 10 | 10 |
+|  | **Total** | **100** | **100** |
 
-Update the video links and self-assessed score after recording. The current suggested submission filename is `23127414_HW04_AI_Automation_076.zip`; rename it if the final self-assessment changes.
+Suggested submission filename: `23127414_HW04_AI_Automation_100.zip`.

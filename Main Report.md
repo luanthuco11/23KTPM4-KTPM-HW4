@@ -136,16 +136,30 @@ AI accelerated scaffolding and repetitive conversion, but it initially lacked th
 - Git history: eight commits that modify `.spec.ts` files.
 - Agent Skill: `agent-skills/eshop-playwright-automation`.
 
-## 11. Remaining student-produced evidence
+## 11. Submission evidence
 
-The following cannot be generated or fabricated by AI and must be completed by the student:
+### Video evidence
 
-- An unlisted YouTube video of at least five minutes with Vietnamese narration.
-- Face-cam or terminal output from `whoami` and `hostname`.
-- A live demonstration of the Agent Skill.
-- GitHub Issues created in the student's public repository with screenshots.
+- Task 2 demo video: [YouTube – Unlisted](https://youtu.be/wVz2drOVd2E).
+- Agent Skill demonstration video: [YouTube – Unlisted](https://youtu.be/lPOh3j1v4oU).
+- The Task 2 video is declared to contain at least five minutes of Vietnamese narration and identity evidence.
+- The Agent Skill video is declared to demonstrate one complete feature from invocation through validation, execution, report review, failure classification, and conclusion.
+- Nine GitHub Issues with screenshots have been created in the student's public repository.
 
-Prepared scripts and issue-ready text are included in `docs/Video Script.md` and `docs/GitHub Issue Drafts.md`.
+Prepared scripts and published Issue links are included in `docs/Video Script.md` and `docs/GitHub Issue Drafts.md`.
+
+### Self-assessment
+
+| Criterion | Maximum | Self-assessed |
+|---|---:|---:|
+| Task 1 – Feature A (FR-01) | 25 | 25 |
+| Task 1 – Feature B (FR-11) | 25 | 25 |
+| Task 1 – Feature C (FR-14) | 25 | 25 |
+| Task 2 – Demo video | 15 | 15 |
+| Agent Skill | 10 | 10 |
+| **Total** | **100** | **100** |
+
+Suggested submission filename: `23127414_HW04_AI_Automation_100.zip`.
 
 ## 12. Conclusion
 

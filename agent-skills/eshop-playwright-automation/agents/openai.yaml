@@ -1,4 +1,4 @@
 interface:
-  display_name: "EShop Playwright Automation"
-  short_description: "Build data-driven multi-browser EShop tests"
-  default_prompt: "Use $eshop-playwright-automation to automate an EShop web feature with data-driven Playwright tests and reviewed reports."
+  display_name: "Tự động hóa Playwright cho EShop"
+  short_description: "Tạo kiểm thử EShop đa trình duyệt"
+  default_prompt: "Hãy dùng $eshop-playwright-automation để tự động hóa một chức năng EShop bằng Playwright theo hướng dữ liệu và tạo report đã được rà soát."

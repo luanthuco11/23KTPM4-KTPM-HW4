@@ -16,11 +16,13 @@
 - [x] Bug report and screenshots prepared.
 - [x] Authenticate GitHub and create nine Issues with screenshots.
 - [x] Agent Skill created and validated.
-- [ ] Record Agent Skill demonstration.
-- [ ] Record unlisted YouTube video, minimum five minutes, Vietnamese narration.
-- [ ] Show face-cam or `whoami` and `hostname` in the video.
-- [ ] Add video URL to README and reports.
+- [x] Record Agent Skill demonstration and provide its URL.
+- [x] Add Task 2 video URL to README and Main Report: https://youtu.be/wVz2drOVd2E.
+- [x] Verify Task 2 video is Unlisted, at least five minutes, and narrated in Vietnamese.
+- [x] Verify Task 2 video shows face-cam or `whoami` and `hostname`.
+- [x] Add Agent Skill video URL to README and Main Report: https://youtu.be/lPOh3j1v4oU.
+- [x] Verify Agent Skill video demonstrates one complete feature from invocation to conclusion.
 - [x] Push automation, reports, PDFs, evidence, and Agent Skill to the public GitHub repository.
-- [ ] Recalculate self-assessment and rename ZIP accordingly.
-- [ ] Export ZIP and verify every required file is included.
+- [x] Recalculate self-assessment: 100/100; ZIP name `23127414_HW04_AI_Automation_100.zip`.
+- [x] Export ZIP and verify every required file is included.
 - [ ] Submit to Moodle before the deadline.

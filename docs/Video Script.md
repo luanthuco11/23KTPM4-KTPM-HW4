@@ -1,59 +1,41 @@
-# Vietnamese Demo Video Script (5–7 minutes)
+# Kịch bản hai video demo HW04
 
-## 0:00–0:30 – Identity evidence
+Bài nộp sử dụng hai video độc lập, không ghép phần Agent Skill vào Video Task 2.
 
-Introduce yourself and HW04. Show a terminal and run:
+## Video 1 – Task 2: Chạy kiểm thử và giải thích
 
-```powershell
-whoami
-hostname
-```
+Xem kịch bản đầy đủ tại [Video 1 – Task 2 Script](Video%201%20-%20Task%202%20Script.md).
 
-State student ID `23127414`.
+Video này dài 6–8 phút và phải thể hiện:
 
-## 0:30–1:20 – Repository and architecture
+- MSSV `23127414`, kết quả `whoami` và `hostname`.
+- Một lượt chạy hoàn chỉnh `npm run test:fr11`.
+- Chromium, Firefox và WebKit.
+- HTML report vừa được tạo bằng `npm run report`.
+- Vấn đề dữ liệu dùng chung hoặc fixed wait trong phương án AI và cách sửa.
+- Lỗi định dạng tiền Việt Nam được giữ lại như một lỗi thật của SUT.
 
-Show `tests/data`, `tests/pages`, `tests/specs`, `reports`, and `agent-skills/eshop-playwright-automation`. Explain that FR-01, FR-11, and FR-14 came from HW02 and that all test data is external JSON.
+Sau khi tải lên YouTube ở chế độ **Không công khai (Unlisted)**, lưu URL với tên `Task 2 video URL`.
 
-## 1:20–2:10 – Human correction of AI output
+## Video 2 – Demo Agent Skill
 
-Open `tests/specs/fr11-order-history.spec.ts` and explain:
+Xem kịch bản đầy đủ tại [Video 2 – Agent Skill Script](Video%202%20-%20Agent%20Skill%20Script.md).
 
-- AI-generated automation originally risked shared data and implicit waits.
-- You changed setup to create unique users/orders per browser worker.
-- You wait for the real `my-orders` response instead of using a fixed sleep.
-- You retained the Vietnamese currency assertion because it exposes a real bug.
+Video này dài khoảng 3–5 phút và phải thể hiện một lượt dùng skill hoàn chỉnh trên FR-11:
 
-## 2:10–3:20 – Multi-browser run
+- Gọi skill trong Codex bằng prompt có chỉ định đường dẫn `SKILL.md`.
+- Kiểm tra dữ liệu JSON, Page Object và test script của FR-11.
+- Chạy FR-11 trên Chromium, Firefox và WebKit.
+- Đọc HTML report và phân loại test thất bại.
+- Kết luận FR-11 có đạt điều kiện hoàn thành của skill hay không.
 
-Run:
+Sau khi tải lên YouTube ở chế độ **Không công khai (Unlisted)**, lưu URL với tên `Agent Skill video URL`.
 
-```powershell
-npm run test:fr11
-```
+## Hoàn thiện bài nộp
 
-Explain that Playwright runs Chromium, Firefox, and WebKit. Mention that three failed executions are expected for the same currency-format defect.
+Sau khi có cả hai URL, gửi lại để cập nhật:
 
-## 3:20–4:30 – HTML report
-
-Open `reports/fr11/index.html`. Show:
-
-- `Run by: 23127414`
-- ISO timestamp
-- 45 executions
-- 42 passed and 3 failed
-- screenshot, video, and trace for the failure
-
-## 4:30–5:30 – Agent Skill demonstration
-
-Open `agent-skills/eshop-playwright-automation/SKILL.md` and explain its workflow. Run:
-
-```powershell
-node agent-skills\eshop-playwright-automation\scripts\validate-test-data.mjs tests\data\registration.json tests\data\order-history.json tests\data\categories.json
-```
-
-Show that all three datasets contain at least 12 unique IDs.
-
-## 5:30–6:00 – Conclusion
-
-Summarize 39 automated cases, 117 browser executions, 72 passed, 45 failed, nine documented bugs, and eight counted test commits. Upload the video as **Unlisted** and paste its URL into README and the submission checklist.
+1. `README.md`.
+2. `Main Report.md` và `Main Report.pdf`.
+3. `docs/Submission Checklist.md`.
+4. Điểm tự đánh giá và tên file ZIP cuối cùng.
