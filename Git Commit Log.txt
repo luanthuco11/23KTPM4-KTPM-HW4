@@ -1,3 +1,32 @@
+* commit ed33817b82207e4cde55272f8f8b2656e7449c7d
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Sun Aug 16 14:34:17 2026 +0700
+| 
+|     docs: translate submission materials to Vietnamese
+| 
+|  AI Audit Report.md                                |  94 ++--
+|  AI Audit Report.pdf                               | Bin 78089 -> 86817 bytes
+|  AI Critique.md                                    |  10 +-
+|  AI Critique.pdf                                   | Bin 74970 -> 81122 bytes
+|  Git Commit Log.txt                                | 463 +++++++++++++++++++-
+|  Main Report.md                                    | 200 ++++-----
+|  Main Report.pdf                                   | Bin 84462 -> 95358 bytes
+|  README.md                                         |  72 +--
+|  docs/Bug Report.md                                | 155 +++----
+|  docs/GitHub Issue Drafts.md                       |  26 +-
+|  docs/Submission Checklist.md                      |  48 +-
+|  docs/github-issues/01-valid-password-rejected.md  |  32 +-
+|  docs/github-issues/02-whitespace-name-accepted.md |  32 +-
+|  docs/github-issues/03-invalid-emails-accepted.md  |  30 +-
+|  docs/github-issues/04-order-total-separator.md    |  28 +-
+|  docs/github-issues/05-blank-category-accepted.md  |  28 +-
+|  .../06-duplicate-category-accepted.md             |  30 +-
+|  .../07-referenced-category-deleted.md             |  32 +-
+|  .../08-delete-nonexistent-success.md              |  28 +-
+|  .../09-normal-user-creates-category.md            |  28 +-
+|  scripts/export_markdown_pdfs.py                   |   4 +-
+|  21 files changed, 898 insertions(+), 442 deletions(-)
+| 
 * commit 9549a772bbdd6df2ed099a54a67578e5311757c3
 | Author: minhluan <luanthuco11@gmail.com>
 | Date:   Sun Aug 16 11:29:38 2026 +0700
