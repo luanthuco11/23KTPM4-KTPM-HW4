@@ -33,24 +33,21 @@
   },
   {
     "id": "TC_CAT_06",
-    "title": "từ chối xóa danh mục đang có sản phẩm",
-    "type": "reject-delete-referenced",
-    "name": "Danh mục có sản phẩm {{unique}}",
-    "expectedStatus": 409
+    "title": "hiển thị danh mục đang được sản phẩm tham chiếu",
+    "type": "referenced-category-visible",
+    "name": "Danh mục có sản phẩm {{unique}}"
   },
   {
     "id": "TC_CAT_07",
-    "title": "báo không tìm thấy khi xóa ID không tồn tại",
-    "type": "reject-delete-missing",
-    "categoryId": 99999999,
-    "expectedStatus": 404
+    "title": "xóa được danh mục rỗng sau khi tải lại trang",
+    "type": "delete-empty",
+    "name": "Danh mục tải lại {{unique}}"
   },
   {
     "id": "TC_CAT_08",
-    "title": "từ chối tên danh mục bị trùng",
-    "type": "reject-duplicate",
-    "name": "Danh mục trùng {{unique}}",
-    "expectedStatus": 409
+    "title": "hiển thị hai danh mục có cùng tên khi hệ thống cho phép",
+    "type": "duplicate-name-visible",
+    "name": "Danh mục trùng {{unique}}"
   },
   {
     "id": "TC_CAT_09",

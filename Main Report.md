@@ -7,19 +7,17 @@
 - Hệ thống được kiểm thử (SUT): **EShop**
 - Framework kiểm thử: **Playwright 1.62.1**
 - Trình duyệt: **Chromium, Firefox, WebKit**
-- Tuyên bố sử dụng AI: **Tôi sử dụng công cụ AI cho các công việc sau:** phân tích yêu cầu, soạn dữ liệu kiểm thử, dựng khung Playwright, rà soát mã, phân tích kết quả thực thi, chuẩn bị báo cáo và xây dựng Agent Skill. Toàn bộ nội dung do AI hỗ trợ đều được con người rà soát và chạy trên SUT thực tế.
+- Tuyên bố sử dụng AI: **Em sử dụng công cụ AI cho các công việc sau:** phân tích yêu cầu, soạn dữ liệu kiểm thử, dựng khung Playwright, rà soát mã, phân tích kết quả thực thi, chuẩn bị báo cáo và xây dựng Agent Skill. Toàn bộ nội dung do AI hỗ trợ đều được con người rà soát và chạy trên SUT thực tế.
 
 ## 2. Lựa chọn chức năng
 
 Ba chức năng web đã chọn trong HW02 được tiếp tục tự động hóa:
 
-| Nhóm | ID | Chức năng |
-|---|---|---|
-| A | FR-01 | Đăng ký tài khoản |
-| B | FR-11 | Xem lịch sử đơn hàng của người dùng |
-| C | FR-14 | Quản lý danh mục |
-
-Chức năng mobile của HW02 không được sử dụng vì HW04 yêu cầu tự động hóa web frontend.
+| Nhóm | ID    | Chức năng                           |
+| ---- | ----- | ----------------------------------- |
+| A    | FR-01 | Đăng ký tài khoản                   |
+| B    | FR-11 | Xem lịch sử đơn hàng của người dùng |
+| C    | FR-14 | Quản lý danh mục                    |
 
 ## 3. Thiết kế bộ kiểm thử tự động
 
@@ -37,12 +35,12 @@ Bộ kiểm thử sử dụng ít nhất ba dạng assertion, gồm kiểm tra U
 
 ## 4. Tóm tắt kết quả thực thi
 
-| Chức năng | Số test case | Lượt thực thi | Thành công | Thất bại | Timestamp report (UTC) |
-|---|---:|---:|---:|---:|---|
-| FR-01 | 12 | 36 | 12 | 24 | 2026-08-14T12:41:07.395Z |
-| FR-11 | 15 | 45 | 42 | 3 | 2026-08-14T12:32:37.193Z |
-| FR-14 | 12 | 36 | 18 | 18 | 2026-08-14T12:38:54.878Z |
-| **Tổng cộng** | **39** | **117** | **72** | **45** | |
+| Chức năng     | Số test case | Lượt thực thi | Thành công | Thất bại | Timestamp report (UTC)   |
+| ------------- | -----------: | ------------: | ---------: | -------: | ------------------------ |
+| FR-01         |           14 |            42 |         12 |       30 | 2026-08-16T11:02:08.000Z |
+| FR-11         |           15 |            45 |         42 |        3 | 2026-08-16T11:03:58.000Z |
+| FR-14         |           12 |            36 |         27 |        9 | 2026-08-16T11:05:27.000Z |
+| **Tổng cộng** |       **41** |       **123** |     **81** |   **42** |                          |
 
 Có chín lượt chạy chức năng–trình duyệt: ba chức năng nhân với ba trình duyệt. Các failure được trình bày dưới đây đều tái hiện ổn định trên cả ba trình duyệt.
 
@@ -50,23 +48,24 @@ Có chín lượt chạy chức năng–trình duyệt: ba chức năng nhân v�
 
 ### Phạm vi và dữ liệu
 
-Mười hai test case bao phủ đăng ký thành công, trường bắt buộc, tên chỉ chứa khoảng trắng, các phân vùng email không hợp lệ, mật khẩu yếu và giá trị biên tám ký tự của mật khẩu. Dữ liệu nằm trong `tests/data/registration.json`.
+Mười bốn test case bao phủ đăng ký thành công, trường bắt buộc, tên chỉ chứa khoảng trắng, các phân vùng email không hợp lệ, mật khẩu yếu, giá trị biên tám ký tự và yêu cầu xác nhận mật khẩu. Dữ liệu nằm trong `tests/data/registration.json`.
 
 ### Kết quả
 
 - 12 lượt thực thi thành công.
-- 24 lượt thực thi thất bại.
-- Tám test case thất bại được tái hiện trên cả ba trình duyệt.
+- 30 lượt thực thi thất bại.
+- Mười test case thất bại được tái hiện trên cả ba trình duyệt.
 
 ### Lỗi thật của SUT
 
 1. Mật khẩu chứa ký tự đặc biệt hợp lệ bị từ chối vì regex frontend yêu cầu khoảng trắng thay cho ký tự đặc biệt.
 2. Tên chỉ chứa khoảng trắng vẫn được chấp nhận.
 3. Các định dạng email không hợp lệ vẫn được chấp nhận vì input dùng `type="text"` và cả frontend lẫn backend đều không kiểm tra định dạng.
+4. Trang đăng ký không có trường xác nhận mật khẩu nên không thể chặn hai mật khẩu không khớp.
 
 ### Con người rà soát kết quả AI
 
-Phương án AI ban đầu có thể làm test email thất bại sai nguyên nhân: biểu thức mật khẩu bị lỗi chặn request trước khi hệ thống kiểm tra email. Bản cuối sử dụng mật khẩu chứa khoảng trắng riêng cho các test email không hợp lệ để vượt qua cổng kiểm tra sai của SUT và cô lập đúng hành vi email. Giá trị email duy nhất được thêm vào để ngăn xung đột giữa các trình duyệt. Cách nạp JSON cũng được đổi từ `import.meta` sang đường dẫn dựa trên thư mục làm việc sau khi lượt chạy đầu phát hiện lỗi module. Locator giới hạn trong form chỉ được giữ ở nơi SUT thiếu liên kết `htmlFor` cho label.
+Phương án AI ban đầu có thể làm test email thất bại sai nguyên nhân: biểu thức mật khẩu bị lỗi chặn request trước khi hệ thống kiểm tra email. Bản cuối chuyển các phân vùng email không hợp lệ sang assertion hợp đồng API, dùng mật khẩu đúng theo đặc tả và đính kèm response vào report; vì vậy failure chỉ còn phản ánh validation email. Hai test riêng kiểm tra sự hiện diện của trường xác nhận mật khẩu và việc từ chối giá trị không khớp. Giá trị email duy nhất được thêm vào để ngăn xung đột giữa các lần chạy.
 
 ## 6. FR-11 – Xem lịch sử đơn hàng
 
@@ -94,29 +93,26 @@ Không sử dụng fixed wait. Page Object chờ phản hồi thật của API `
 
 ### Phạm vi và dữ liệu
 
-Mười hai test case bao phủ tạo mới, hiển thị danh sách, xóa, tên rỗng hoặc chỉ có khoảng trắng, danh mục đang được sản phẩm tham chiếu, ID không tồn tại, tên trùng, truy cập không có quyền admin, tên một ký tự và biên danh sách 0/1. Dữ liệu nằm trong `tests/data/categories.json`.
+Mười hai test case bao phủ tạo mới, hiển thị danh sách, xóa, tên rỗng hoặc chỉ có khoảng trắng, hiển thị danh mục có sản phẩm tham chiếu, thao tác sau khi tải lại trang, tên trùng theo hành vi hiện tại, truy cập không có quyền admin, tên một ký tự và biên danh sách 0/1. Dữ liệu nằm trong `tests/data/categories.json`.
 
 ### Kết quả
 
-- 18 lượt thực thi thành công.
-- 18 lượt thực thi thất bại.
-- Sáu test case thất bại được tái hiện trên cả ba trình duyệt.
+- 27 lượt thực thi thành công.
+- 9 lượt thực thi thất bại.
+- Ba test case thất bại được tái hiện trên cả ba trình duyệt.
 
 ### Lỗi thật của SUT
 
 1. Tên rỗng và tên chỉ chứa khoảng trắng vẫn được chấp nhận.
-2. Tên danh mục trùng vẫn được chấp nhận.
-3. Danh mục đang được sản phẩm tham chiếu vẫn có thể bị xóa.
-4. Xóa ID không tồn tại vẫn trả về thành công.
-5. Token của người dùng thường có thể tạo danh mục vì thiếu kiểm tra role.
+2. Token của người dùng thường có thể tạo danh mục vì thiếu kiểm tra role.
 
 ### Con người rà soát kết quả AI
 
-Bộ test cuối kiểm tra chính xác HTTP status cho hành vi API không hợp lệ thay vì coi mọi request hoàn tất là thành công. Test tự tạo danh mục và sản phẩm tham chiếu thay vì phụ thuộc seed ID. Test biên hiển thị 0/1 chỉ mock phản hồi GET danh mục, nhờ đó assertion giao diện có tính xác định mà không ghi lại cơ sở dữ liệu SUT.
+Bộ test cuối chỉ áp dụng HTTP status khi đặc tả quy định rõ kết quả: tên danh mục bắt buộc và API quản trị yêu cầu role admin. Các tình huống tên trùng, xóa ID không tồn tại và xóa danh mục đang được tham chiếu được chuyển thành kiểm tra giao diện/hành vi hiện tại, không kết luận là lỗi khi đề không nêu quy tắc. Test tự tạo danh mục và sản phẩm tham chiếu thay vì phụ thuộc seed ID. Vì EShop dùng SQLite chung, cấu hình chạy tuần tự để dữ liệu giữa browser không làm nhiễu nhau.
 
 ## 8. Phân tích lỗi
 
-Chín lỗi khác nhau được ghi nhận trong `docs/Bug Report.md`. Một automated test thất bại chỉ được phân loại là lỗi SUT khi:
+Bảy lỗi khác nhau được ghi nhận trong `docs/Bug Report.md`. Một automated test thất bại chỉ được phân loại là lỗi SUT khi:
 
 1. assertion phù hợp với yêu cầu đã viết;
 2. failure lặp lại trên Chromium, Firefox và WebKit;
@@ -125,7 +121,7 @@ Chín lỗi khác nhau được ghi nhận trong `docs/Bug Report.md`. Một aut
 
 ## 9. Phân tích khoảng trống của AI
 
-AI giúp tăng tốc việc dựng khung và chuyển đổi các phần lặp lại, nhưng ban đầu thiếu ba loại ngữ cảnh: các lỗi được cài có chủ đích trong SUT, yêu cầu cô lập một nguyên nhân lỗi cho mỗi test và trạng thái cơ sở dữ liệu dùng chung giữa các browser worker. Con người bổ sung dữ liệu duy nhất, điều kiện trước qua API, thiết lập chuyển trạng thái, fixture biên có tính xác định, kiểm tra metadata report và khôi phục cơ sở dữ liệu. Vì vậy, kết quả AI được xem là bản nháp chứ không phải bằng chứng kiểm thử đã được chấp nhận.
+AI giúp tăng tốc việc dựng khung và chuyển đổi các phần lặp lại, nhưng ban đầu thiếu ba loại ngữ cảnh: các lỗi được cài có chủ đích trong SUT, yêu cầu cô lập một nguyên nhân lỗi cho mỗi test và SQLite dùng chung giữa các browser worker. Con người bổ sung dữ liệu duy nhất, điều kiện trước qua API, assertion hợp đồng API cho validation email, kiểm tra cô lập dữ liệu trên giao diện, thực thi tuần tự, fixture biên có tính xác định và kiểm tra metadata report. Vì vậy, kết quả AI được xem là bản nháp chứ không phải bằng chứng kiểm thử đã được chấp nhận.
 
 ## 10. Khả năng tái hiện và bằng chứng
 
@@ -142,25 +138,20 @@ AI giúp tăng tốc việc dựng khung và chuyển đổi các phần lặp l
 
 - Video demo Task 2: [YouTube – Không công khai](https://youtu.be/wVz2drOVd2E).
 - Video demo Agent Skill: [YouTube – Không công khai](https://youtu.be/lPOh3j1v4oU).
-- Video Task 2 được xác nhận dài ít nhất năm phút, có thuyết minh tiếng Việt và bằng chứng danh tính.
-- Video Agent Skill được xác nhận trình diễn một chức năng hoàn chỉnh từ lúc gọi skill, kiểm tra, thực thi, đọc report, phân loại failure đến kết luận.
-- Chín GitHub Issues có screenshot đã được tạo trong repository công khai của sinh viên.
-
-Kịch bản đã chuẩn bị và liên kết Issue được lưu trong `docs/Video Script.md` và `docs/GitHub Issue Drafts.md`.
 
 ### Tự đánh giá
 
-| Tiêu chí | Điểm tối đa | Điểm tự đánh giá |
-|---|---:|---:|
-| Task 1 – Chức năng A (FR-01) | 25 | 25 |
-| Task 1 – Chức năng B (FR-11) | 25 | 25 |
-| Task 1 – Chức năng C (FR-14) | 25 | 25 |
-| Task 2 – Video demo | 15 | 15 |
-| Agent Skill | 10 | 10 |
-| **Tổng cộng** | **100** | **100** |
+| Tiêu chí                     | Điểm tối đa | Điểm tự đánh giá |
+| ---------------------------- | ----------: | ---------------: |
+| Task 1 – Chức năng A (FR-01) |          25 |               25 |
+| Task 1 – Chức năng B (FR-11) |          25 |               25 |
+| Task 1 – Chức năng C (FR-14) |          25 |               25 |
+| Task 2 – Video demo          |          15 |               15 |
+| Agent Skill                  |          10 |               10 |
+| **Tổng cộng**                |     **100** |          **100** |
 
 Tên file nộp bài: `23127414_HW04_AI_Automation_100.zip`.
 
 ## 12. Kết luận
 
-Bộ kiểm thử hoàn chỉnh tự động hóa 39 test case với 117 lượt thực thi trên trình duyệt. Các assertion thất bại làm lộ ra chín lỗi có thể tái hiện được giữ nguyên. Bài nộp có dữ liệu, test script, HTML report đa trình duyệt, ghi chú con người rà soát, bằng chứng commit và Agent Skill có thể tái sử dụng đã được xác thực.
+Bộ kiểm thử hoàn chỉnh tự động hóa 41 test case với 123 lượt thực thi trên trình duyệt. Các assertion thất bại làm lộ ra bảy lỗi có căn cứ từ đặc tả và có thể tái hiện được giữ nguyên. Bài nộp có dữ liệu, test script, HTML report đa trình duyệt, ghi chú con người rà soát, bằng chứng commit và Agent Skill có thể tái sử dụng đã được xác thực.

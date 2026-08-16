@@ -63,16 +63,30 @@ test.describe('FR-11 — Xem lịch sử đơn hàng', () => {
       if (testCase.type === 'data-isolation') {
         const userA = await createTestUser(request, `${uniqueValue}-a`);
         const userB = await createTestUser(request, `${uniqueValue}-b`);
+        const userAOrderIds: number[] = [];
+        const userBOrderIds: number[] = [];
         for (let i = 0; i < (testCase.userAOrders ?? 0); i += 1) {
-          await createOrder(request, userA.token, 100_000 + i);
+          userAOrderIds.push(
+            await createOrder(request, userA.token, 100_000 + i),
+          );
         }
         for (let i = 0; i < (testCase.userBOrders ?? 0); i += 1) {
-          await createOrder(request, userB.token, 200_000 + i);
+          userBOrderIds.push(
+            await createOrder(request, userB.token, 200_000 + i),
+          );
         }
 
         const userAOrders = await getMyOrders(request, userA.token);
         expect(userAOrders).toHaveLength(testCase.userAOrders ?? 0);
         expect(userAOrders.every((order: { user_id: number }) => order.user_id === userA.id)).toBe(true);
+        await orderHistoryPage.gotoAuthenticated(userA.token);
+        await expect(orderHistoryPage.rows).toHaveCount(userAOrderIds.length);
+        for (const orderId of userAOrderIds) {
+          await expect(orderHistoryPage.rowByOrderId(orderId)).toBeVisible();
+        }
+        for (const orderId of userBOrderIds) {
+          await expect(orderHistoryPage.rowByOrderId(orderId)).toHaveCount(0);
+        }
         return;
       }
 

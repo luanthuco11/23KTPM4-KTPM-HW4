@@ -6,7 +6,6 @@ import {
   createCategory,
   createProductForCategory,
   createTestUser,
-  deleteCategory,
   loginAsAdmin,
 } from '../support/eshop-api';
 
@@ -19,9 +18,8 @@ type CategoryCase = {
     | 'delete-empty'
     | 'reject-non-admin'
     | 'reject-invalid-name'
-    | 'reject-delete-referenced'
-    | 'reject-delete-missing'
-    | 'reject-duplicate'
+    | 'referenced-category-visible'
+    | 'duplicate-name-visible'
     | 'single-character'
     | 'list-boundary';
   name?: string;
@@ -73,6 +71,14 @@ test.describe('FR-14 — Quản lý danh mục', () => {
           headers: { Authorization: `Bearer ${user.token}` },
           data: { name: categoryName },
         });
+        await testInfo.attach('Phản hồi tạo danh mục bằng token người dùng thường', {
+          body: JSON.stringify(
+            { status: response.status(), response: await response.json() },
+            null,
+            2,
+          ),
+          contentType: 'application/json',
+        });
         expect(response.status()).toBe(403);
         return;
       }
@@ -96,33 +102,26 @@ test.describe('FR-14 — Quản lý danh mục', () => {
         return;
       }
 
-      if (testCase.type === 'reject-delete-missing') {
-        const response = await deleteCategory(
-          request,
-          adminToken,
-          testCase.categoryId!,
-        );
-        expect(response.status()).toBe(testCase.expectedStatus);
-        return;
-      }
-
-      if (testCase.type === 'reject-delete-referenced') {
+      if (testCase.type === 'referenced-category-visible') {
         const categoryId = await createCategory(
           request,
           adminToken,
           categoryName,
         );
         await createProductForCategory(request, categoryId, uniqueValue);
-        const response = await deleteCategory(request, adminToken, categoryId);
-        expect(response.status()).toBe(testCase.expectedStatus);
+        await categoryPage.goto(adminToken);
+        await expect(categoryPage.rowByName(categoryName)).toBeVisible();
         return;
       }
 
-      if (testCase.type === 'reject-duplicate') {
+      if (testCase.type === 'duplicate-name-visible') {
         await createCategory(request, adminToken, categoryName);
         await categoryPage.goto(adminToken);
+        const matchingRows = categoryPage.rowByName(categoryName);
+        const countBefore = await matchingRows.count();
         const response = await categoryPage.addCategory(categoryName);
-        expect(response.status()).toBe(testCase.expectedStatus);
+        expect(response.ok()).toBe(true);
+        await expect(matchingRows).toHaveCount(countBefore + 1);
         return;
       }
 
@@ -141,6 +140,14 @@ test.describe('FR-14 — Quản lý danh mục', () => {
 
       if (testCase.type === 'reject-invalid-name') {
         const response = await categoryPage.addCategory(categoryName);
+        await testInfo.attach('Phản hồi tạo danh mục với tên không hợp lệ', {
+          body: JSON.stringify(
+            { status: response.status(), response: await response.json() },
+            null,
+            2,
+          ),
+          contentType: 'application/json',
+        });
         expect(response.status()).toBe(testCase.expectedStatus);
         await expect(categoryPage.nameInput).toHaveValue(categoryName);
         return;

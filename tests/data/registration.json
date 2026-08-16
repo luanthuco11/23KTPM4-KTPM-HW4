@@ -21,7 +21,7 @@
     "name": "   ",
     "email": "blank-name-{{unique}}@example.com",
     "password": "Pass123 ",
-    "expectation": "rejected"
+    "expectation": "blank-name-api"
   },
   {
     "id": "TC_REG_04",
@@ -35,41 +35,41 @@
     "id": "TC_REG_05",
     "title": "từ chối email thiếu ký tự @",
     "name": "Nguyễn Văn A",
-    "email": "userexample.com",
-    "password": "Pass123 ",
-    "expectation": "rejected"
+    "email": "user-{{unique}}example.com",
+    "password": "Pass123!",
+    "expectation": "invalid-email-api"
   },
   {
     "id": "TC_REG_06",
     "title": "từ chối email thiếu tên người dùng",
     "name": "Nguyễn Văn A",
-    "email": "@example.com",
-    "password": "Pass123 ",
-    "expectation": "rejected"
+    "email": "@example-{{unique}}.com",
+    "password": "Pass123!",
+    "expectation": "invalid-email-api"
   },
   {
     "id": "TC_REG_07",
     "title": "từ chối email thiếu tên miền",
     "name": "Nguyễn Văn A",
-    "email": "user@",
-    "password": "Pass123 ",
-    "expectation": "rejected"
+    "email": "user-{{unique}}@",
+    "password": "Pass123!",
+    "expectation": "invalid-email-api"
   },
   {
     "id": "TC_REG_08",
     "title": "từ chối email thiếu tên miền cấp cao",
     "name": "Nguyễn Văn A",
-    "email": "user@domain",
-    "password": "Pass123 ",
-    "expectation": "rejected"
+    "email": "user-{{unique}}@domain",
+    "password": "Pass123!",
+    "expectation": "invalid-email-api"
   },
   {
     "id": "TC_REG_09",
     "title": "từ chối email chứa khoảng trắng",
     "name": "Nguyễn Văn A",
     "email": "user name-{{unique}}@example.com",
-    "password": "Pass123 ",
-    "expectation": "rejected"
+    "password": "Pass123!",
+    "expectation": "invalid-email-api"
   },
   {
     "id": "TC_REG_10",
@@ -94,5 +94,22 @@
     "email": "boundary-{{unique}}@example.com",
     "password": "Abc1234!",
     "expectation": "success"
+  },
+  {
+    "id": "TC_REG_12",
+    "title": "có trường xác nhận mật khẩu",
+    "name": "Nguyễn Văn C",
+    "email": "confirm-field-{{unique}}@example.com",
+    "password": "Pass123!",
+    "expectation": "confirmation-field"
+  },
+  {
+    "id": "TC_REG_13",
+    "title": "từ chối khi xác nhận mật khẩu không khớp",
+    "name": "Nguyễn Văn C",
+    "email": "confirm-mismatch-{{unique}}@example.com",
+    "password": "Pass123!",
+    "confirmPassword": "Pass123?",
+    "expectation": "password-mismatch"
   }
 ]

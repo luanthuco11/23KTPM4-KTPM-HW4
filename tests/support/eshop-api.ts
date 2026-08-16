@@ -38,6 +38,30 @@ export async function createTestUser(
   };
 }
 
+export async function registerUser(
+  request: APIRequestContext,
+  data: { name: string; email: string; password: string },
+) {
+  return request.post(`${apiBaseUrl}/api/register`, { data });
+}
+
+export async function deleteTestUser(
+  request: APIRequestContext,
+  adminToken: string,
+  userId: number,
+) {
+  return request.delete(`${apiBaseUrl}/api/admin/users/${userId}`, {
+    headers: { Authorization: `Bearer ${adminToken}` },
+  });
+}
+
+export async function deleteProduct(
+  request: APIRequestContext,
+  productId: number,
+) {
+  return request.delete(`${apiBaseUrl}/api/products/${productId}`);
+}
+
 export async function createOrder(
   request: APIRequestContext,
   token: string,

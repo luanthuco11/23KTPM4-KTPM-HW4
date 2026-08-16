@@ -8,7 +8,8 @@ export default defineConfig({
   fullyParallel: false,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // EShop dùng chung SQLite; chạy tuần tự tránh browser worker làm nhiễu dữ liệu của nhau.
+  workers: 1,
   timeout: 30_000,
   expect: {
     timeout: 5_000,
