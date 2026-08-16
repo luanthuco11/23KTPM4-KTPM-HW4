@@ -1,29 +1,29 @@
-## Feature
+## Chức năng
 
-FR-01 – Account registration
+FR-01 – Đăng ký tài khoản
 
-## Severity
+## Mức độ
 
-High
+Cao
 
-## Related tests
+## Test liên quan
 
 `TC_REG_05`–`TC_REG_09`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open the registration page.
-2. Enter an email missing `@`, local part, domain, or TLD, or containing spaces.
-3. Complete the remaining fields and submit.
+1. Mở trang đăng ký.
+2. Nhập email thiếu `@`, thiếu local part, domain hoặc TLD, hoặc chứa khoảng trắng.
+3. Hoàn tất các trường còn lại và gửi form.
 
-## Expected result
+## Kết quả mong đợi
 
-The invalid email is rejected.
+Email không hợp lệ bị từ chối.
 
-## Actual result
+## Kết quả thực tế
 
-The backend accepts the invalid email and registration completes.
+Backend chấp nhận email không hợp lệ và hoàn tất đăng ký.
 
-## Evidence
+## Bằng chứng
 
-![FR-01 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr01-report-summary.png)
+![Playwright report FR-01](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr01-report-summary.png)

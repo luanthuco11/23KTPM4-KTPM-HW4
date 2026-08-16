@@ -1,99 +1,100 @@
-# EShop HW04 Bug Report
+# BÁO CÁO LỖI ESHOP – HW04
 
-**Student ID:** 23127414  
-**Environment:** Chromium, Firefox, WebKit; EShop local SUT; Playwright 1.62.1
+**Mã số sinh viên:** 23127414
 
-All nine bugs below reproduced on all three browsers. The issue-ready versions are in `docs/GitHub Issue Drafts.md`.
+**Môi trường:** Chromium, Firefox, WebKit; SUT EShop chạy local; Playwright 1.62.1
 
-## BUG-01 – Valid special-character passwords are rejected
+Chín lỗi dưới đây đều được tái hiện trên cả ba trình duyệt. Liên kết GitHub Issue nằm trong `docs/GitHub Issue Drafts.md`.
 
-- Feature: FR-01
-- Severity: High
-- Tests: `TC_REG_01`, `TC_BVA_01`
-- Steps: Open registration, enter valid name/email, enter `Pass123!` or boundary value `Abc1234!`, submit.
-- Expected: Registration succeeds and redirects to login.
-- Actual: The UI reports a weak password.
-- Cause observed: The regex requires whitespace (`\s`) instead of a special character.
-- Evidence: [FR-01 report screenshot](bug-evidence/fr01-report-summary.png)
+## BUG-01 – Mật khẩu có ký tự đặc biệt hợp lệ bị từ chối
 
-## BUG-02 – Whitespace-only names are accepted
+- Chức năng: FR-01
+- Mức độ: Cao
+- Test: `TC_REG_01`, `TC_BVA_01`
+- Các bước: Mở trang đăng ký, nhập tên/email hợp lệ, nhập `Pass123!` hoặc giá trị biên `Abc1234!`, sau đó gửi form.
+- Mong đợi: Đăng ký thành công và chuyển đến trang đăng nhập.
+- Thực tế: Giao diện báo mật khẩu yếu.
+- Nguyên nhân quan sát được: Regex yêu cầu khoảng trắng (`\s`) thay cho ký tự đặc biệt.
+- Bằng chứng: [Screenshot report FR-01](bug-evidence/fr01-report-summary.png)
 
-- Feature: FR-01
-- Severity: Medium
+## BUG-02 – Tên chỉ chứa khoảng trắng vẫn được chấp nhận
+
+- Chức năng: FR-01
+- Mức độ: Trung bình
 - Test: `TC_REG_03`
-- Steps: Enter three spaces as the name, an email, and a value that reaches submission; submit.
-- Expected: Name validation error; remain on registration.
-- Actual: The account is created and the UI redirects to login.
-- Evidence: [FR-01 report screenshot](bug-evidence/fr01-report-summary.png)
+- Các bước: Nhập ba khoảng trắng làm tên, nhập email và mật khẩu cho phép gửi form, sau đó đăng ký.
+- Mong đợi: Hiển thị lỗi validation tên và vẫn ở trang đăng ký.
+- Thực tế: Tài khoản được tạo và giao diện chuyển đến trang đăng nhập.
+- Bằng chứng: [Screenshot report FR-01](bug-evidence/fr01-report-summary.png)
 
-## BUG-03 – Invalid email formats are accepted
+## BUG-03 – Định dạng email không hợp lệ vẫn được chấp nhận
 
-- Feature: FR-01
-- Severity: High
-- Tests: `TC_REG_05`–`TC_REG_09`
-- Steps: Register using email values missing `@`, local part, domain, TLD, or containing spaces.
-- Expected: The invalid email is rejected.
-- Actual: The backend accepts the email and registration completes.
-- Evidence: [FR-01 report screenshot](bug-evidence/fr01-report-summary.png)
+- Chức năng: FR-01
+- Mức độ: Cao
+- Test: `TC_REG_05`–`TC_REG_09`
+- Các bước: Đăng ký bằng email thiếu `@`, thiếu local part, thiếu domain, thiếu TLD hoặc chứa khoảng trắng.
+- Mong đợi: Email không hợp lệ bị từ chối.
+- Thực tế: Backend chấp nhận email và hoàn tất đăng ký.
+- Bằng chứng: [Screenshot report FR-01](bug-evidence/fr01-report-summary.png)
 
-## BUG-04 – Order totals use the wrong Vietnamese thousands separator
+## BUG-04 – Tổng tiền dùng sai dấu phân cách hàng nghìn của Việt Nam
 
-- Feature: FR-11
-- Severity: Low
+- Chức năng: FR-11
+- Mức độ: Thấp
 - Test: `TC_ORD_10`
-- Steps: View an order with `total_amount = 1250000`.
-- Expected: `1.250.000 ₫`.
-- Actual: `1,250,000 ₫`.
-- Cause observed: `toLocaleString()` is called without `vi-VN`.
-- Evidence: [FR-11 report screenshot](bug-evidence/fr11-report-summary.png)
+- Các bước: Xem đơn hàng có `total_amount = 1250000`.
+- Mong đợi: `1.250.000 ₫`.
+- Thực tế: `1,250,000 ₫`.
+- Nguyên nhân quan sát được: `toLocaleString()` được gọi mà không có `vi-VN`.
+- Bằng chứng: [Screenshot report FR-11](bug-evidence/fr11-report-summary.png)
 
-## BUG-05 – Empty and whitespace-only category names are accepted
+## BUG-05 – Tên danh mục rỗng hoặc chỉ có khoảng trắng vẫn được chấp nhận
 
-- Feature: FR-14
-- Severity: Medium
-- Tests: `TC_CAT_02`, `TC_CAT_03`
-- Steps: Submit an empty category name or spaces only.
-- Expected: HTTP 400 and a visible validation error.
-- Actual: HTTP 200; a blank category is inserted.
-- Evidence: [FR-14 report screenshot](bug-evidence/fr14-report-summary.png)
+- Chức năng: FR-14
+- Mức độ: Trung bình
+- Test: `TC_CAT_02`, `TC_CAT_03`
+- Các bước: Gửi tên danh mục rỗng hoặc chỉ gồm khoảng trắng.
+- Mong đợi: HTTP 400 và hiển thị lỗi validation.
+- Thực tế: HTTP 200 và một danh mục trống được thêm vào.
+- Bằng chứng: [Screenshot report FR-14](bug-evidence/fr14-report-summary.png)
 
-## BUG-06 – Duplicate category names are accepted
+## BUG-06 – Tên danh mục trùng vẫn được chấp nhận
 
-- Feature: FR-14
-- Severity: Medium
+- Chức năng: FR-14
+- Mức độ: Trung bình
 - Test: `TC_CAT_08`
-- Steps: Create a category, then submit the same name again.
-- Expected: HTTP 409 or a duplicate-name validation message.
-- Actual: HTTP 200 and a second category is created.
-- Evidence: [FR-14 report screenshot](bug-evidence/fr14-report-summary.png)
+- Các bước: Tạo một danh mục, sau đó gửi lại cùng tên.
+- Mong đợi: HTTP 409 hoặc thông báo validation tên trùng.
+- Thực tế: HTTP 200 và danh mục thứ hai được tạo.
+- Bằng chứng: [Screenshot report FR-14](bug-evidence/fr14-report-summary.png)
 
-## BUG-07 – A category referenced by a product can be deleted
+## BUG-07 – Có thể xóa danh mục đang được sản phẩm tham chiếu
 
-- Feature: FR-14
-- Severity: High
+- Chức năng: FR-14
+- Mức độ: Cao
 - Test: `TC_CAT_06`
-- Steps: Create a category, create a product assigned to it, then delete the category.
-- Expected: HTTP 409; deletion is blocked.
-- Actual: HTTP 200; the category is deleted and an orphan reference remains.
-- Evidence: [FR-14 report screenshot](bug-evidence/fr14-report-summary.png)
+- Các bước: Tạo danh mục, tạo sản phẩm thuộc danh mục đó, sau đó xóa danh mục.
+- Mong đợi: HTTP 409 và thao tác xóa bị chặn.
+- Thực tế: HTTP 200, danh mục bị xóa và để lại tham chiếu mồ côi.
+- Bằng chứng: [Screenshot report FR-14](bug-evidence/fr14-report-summary.png)
 
-## BUG-08 – Deleting a nonexistent category reports success
+## BUG-08 – Xóa danh mục không tồn tại vẫn báo thành công
 
-- Feature: FR-14
-- Severity: Medium
+- Chức năng: FR-14
+- Mức độ: Trung bình
 - Test: `TC_CAT_07`
-- Steps: Send `DELETE /api/categories/99999999` with an admin token.
-- Expected: HTTP 404.
-- Actual: HTTP 200 with `Category deleted`.
-- Evidence: [FR-14 report screenshot](bug-evidence/fr14-report-summary.png)
+- Các bước: Gửi `DELETE /api/categories/99999999` bằng token admin.
+- Mong đợi: HTTP 404.
+- Thực tế: HTTP 200 với nội dung `Category deleted`.
+- Bằng chứng: [Screenshot report FR-14](bug-evidence/fr14-report-summary.png)
 
-## BUG-09 – Regular users can create categories through the admin API
+## BUG-09 – Người dùng thường có thể tạo danh mục qua admin API
 
-- Feature: FR-14
-- Severity: Critical
+- Chức năng: FR-14
+- Mức độ: Nghiêm trọng
 - Test: `TC_CAT_09`
-- Steps: Log in as a normal user and call `POST /api/categories` with its JWT.
-- Expected: HTTP 403.
-- Actual: HTTP 200 and the category is created.
-- Cause observed: Authentication is checked, but the admin role is not.
-- Evidence: [FR-14 report screenshot](bug-evidence/fr14-report-summary.png)
+- Các bước: Đăng nhập bằng người dùng thường và gọi `POST /api/categories` với JWT của người dùng đó.
+- Mong đợi: HTTP 403.
+- Thực tế: HTTP 200 và danh mục được tạo.
+- Nguyên nhân quan sát được: Hệ thống kiểm tra authentication nhưng không kiểm tra role admin.
+- Bằng chứng: [Screenshot report FR-14](bug-evidence/fr14-report-summary.png)

@@ -210,8 +210,8 @@ def footer(canvas, document):
     canvas.saveState()
     canvas.setFont("Arial", 8)
     canvas.setFillColor(colors.HexColor("#4B5563"))
-    canvas.drawString(18 * mm, 12 * mm, "HW04 – Student ID 23127414")
-    canvas.drawRightString(A4[0] - 18 * mm, 12 * mm, f"Page {document.page}")
+    canvas.drawString(18 * mm, 12 * mm, "HW04 – MSSV 23127414")
+    canvas.drawRightString(A4[0] - 18 * mm, 12 * mm, f"Trang {document.page}")
     canvas.restoreState()
 
 

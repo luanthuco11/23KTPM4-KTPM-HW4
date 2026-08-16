@@ -1,52 +1,52 @@
-# HW04 – AI Automation Testing
+# HW04 – Kiểm thử tự động có hỗ trợ AI
 
-**Student ID:** 23127414
+**Mã số sinh viên:** 23127414
 
-**System Under Test:** EShop
+**Hệ thống được kiểm thử (SUT):** EShop
 
 **Framework:** Playwright
 
-**Browsers:** Chromium, Firefox, WebKit
+**Trình duyệt:** Chromium, Firefox, WebKit
 
-## Selected features
+## Các chức năng được chọn
 
-| Pool | Feature |
+| Nhóm | Chức năng |
 |---|---|
-| A | FR-01 – Account registration |
-| B | FR-11 – User order history |
-| C | FR-14 – Category management |
+| A | FR-01 – Đăng ký tài khoản |
+| B | FR-11 – Xem lịch sử đơn hàng |
+| C | FR-14 – Quản lý danh mục |
 
-## Test summary
+## Tóm tắt kiểm thử
 
-| Feature | Automated test cases | Browser executions | Passed | Failed |
+| Chức năng | Test case tự động | Lượt thực thi trên trình duyệt | Thành công | Thất bại |
 |---|---:|---:|---:|---:|
 | FR-01 | 12 | 36 | 12 | 24 |
 | FR-11 | 15 | 45 | 42 | 3 |
 | FR-14 | 12 | 36 | 18 | 18 |
-| **Total** | **39** | **117** | **72** | **45** |
+| **Tổng cộng** | **39** | **117** | **72** | **45** |
 
-- Feature–browser runs: **9**
-- Distinct bugs documented: **9**
+- Số lượt chạy chức năng–trình duyệt: **9**
+- Số lỗi khác nhau đã ghi nhận: **9**
 - GitHub Issues: [#1–#9](https://github.com/luanthuco11/23KTPM4-KTPM-HW4/issues)
-- Test-script commits counted: **8**
-- Task 2 demo video: [YouTube – Unlisted](https://youtu.be/wVz2drOVd2E)
-- Agent Skill demo video: [YouTube – Unlisted](https://youtu.be/lPOh3j1v4oU)
-- Public repository: <https://github.com/luanthuco11/23KTPM4-KTPM-HW4>
+- Số commit thay đổi test script được tính: **8**
+- Video demo Task 2: [YouTube – Không công khai](https://youtu.be/wVz2drOVd2E)
+- Video demo Agent Skill: [YouTube – Không công khai](https://youtu.be/lPOh3j1v4oU)
+- Repository công khai: <https://github.com/luanthuco11/23KTPM4-KTPM-HW4>
 
-Failed assertions are retained when they consistently expose a genuine SUT defect. See [Bug Report](docs/Bug%20Report.md) and the archived HTML reports.
+Các assertion thất bại vẫn được giữ lại khi chúng phát hiện ổn định một lỗi thật của SUT. Xem [Báo cáo lỗi](docs/Bug%20Report.md) và các HTML report đã lưu.
 
-## Reports
+## Báo cáo và tài liệu
 
-- [FR-01 HTML report](reports/fr01/index.html)
-- [FR-11 HTML report](reports/fr11/index.html)
-- [FR-14 HTML report](reports/fr14/index.html)
-- [Main Report](Main%20Report.md)
-- [AI Audit Report](AI%20Audit%20Report.md)
-- [AI Critique](AI%20Critique.md)
+- [HTML report FR-01](reports/fr01/index.html)
+- [HTML report FR-11](reports/fr11/index.html)
+- [HTML report FR-14](reports/fr14/index.html)
+- [Báo cáo chính](Main%20Report.md)
+- [Báo cáo kiểm toán AI](AI%20Audit%20Report.md)
+- [Bài phê bình AI](AI%20Critique.md)
 - [Git Commit Log](Git%20Commit%20Log.txt)
 - [Agent Skill](agent-skills/eshop-playwright-automation/SKILL.md)
 
-## Run the automation
+## Chạy bộ kiểm thử tự động
 
 ```bash
 npm install
@@ -56,17 +56,17 @@ npm run test:fr11
 npm run test:fr14
 ```
 
-Playwright starts the backend, storefront, and admin frontend automatically when they are not already running.
+Playwright tự khởi động backend, storefront và trang quản trị khi các dịch vụ chưa chạy.
 
-## Self-assessment
+## Tự đánh giá
 
-| No. | Criterion | Maximum | Self-assessed |
+| STT | Tiêu chí | Điểm tối đa | Điểm tự đánh giá |
 |---:|---|---:|---:|
-| 1 | Task 1 – Feature A (FR-01) | 25 | 25 |
-| 2 | Task 1 – Feature B (FR-11) | 25 | 25 |
-| 3 | Task 1 – Feature C (FR-14) | 25 | 25 |
-| 4 | Task 2 – Demo video | 15 | 15 |
+| 1 | Task 1 – Chức năng A (FR-01) | 25 | 25 |
+| 2 | Task 1 – Chức năng B (FR-11) | 25 | 25 |
+| 3 | Task 1 – Chức năng C (FR-14) | 25 | 25 |
+| 4 | Task 2 – Video demo | 15 | 15 |
 | 5 | Agent Skill | 10 | 10 |
-|  | **Total** | **100** | **100** |
+|  | **Tổng cộng** | **100** | **100** |
 
-Suggested submission filename: `23127414_HW04_AI_Automation_100.zip`.
+Tên file nộp bài: `23127414_HW04_AI_Automation_100.zip`.

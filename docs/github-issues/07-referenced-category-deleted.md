@@ -1,30 +1,30 @@
-## Feature
+## Chức năng
 
-FR-14 – Category management
+FR-14 – Quản lý danh mục
 
-## Severity
+## Mức độ
 
-High
+Cao
 
-## Related test
+## Test liên quan
 
 `TC_CAT_06`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in as an administrator.
-2. Create a category.
-3. Create a product assigned to that category.
-4. Delete the category.
+1. Đăng nhập bằng tài khoản admin.
+2. Tạo một danh mục.
+3. Tạo một sản phẩm thuộc danh mục đó.
+4. Xóa danh mục.
 
-## Expected result
+## Kết quả mong đợi
 
-The API returns HTTP 409 and blocks deletion.
+API trả về HTTP 409 và chặn thao tác xóa.
 
-## Actual result
+## Kết quả thực tế
 
-The API returns HTTP 200, deletes the category, and leaves an orphan product reference.
+API trả về HTTP 200, xóa danh mục và để lại tham chiếu sản phẩm mồ côi.
 
-## Evidence
+## Bằng chứng
 
-![FR-14 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)
+![Playwright report FR-14](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)

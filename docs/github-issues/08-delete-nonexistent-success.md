@@ -1,28 +1,28 @@
-## Feature
+## Chức năng
 
-FR-14 – Category management
+FR-14 – Quản lý danh mục
 
-## Severity
+## Mức độ
 
-Medium
+Trung bình
 
-## Related test
+## Test liên quan
 
 `TC_CAT_07`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in as an administrator.
-2. Send `DELETE /api/categories/99999999` with the administrator token.
+1. Đăng nhập bằng tài khoản admin.
+2. Gửi `DELETE /api/categories/99999999` bằng token admin.
 
-## Expected result
+## Kết quả mong đợi
 
-The API returns HTTP 404.
+API trả về HTTP 404.
 
-## Actual result
+## Kết quả thực tế
 
-The API returns HTTP 200 with `Category deleted`.
+API trả về HTTP 200 với nội dung `Category deleted`.
 
-## Evidence
+## Bằng chứng
 
-![FR-14 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)
+![Playwright report FR-14](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)

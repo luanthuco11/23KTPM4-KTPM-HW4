@@ -1,28 +1,28 @@
-## Feature
+## Chức năng
 
-FR-14 – Category management
+FR-14 – Quản lý danh mục
 
-## Severity
+## Mức độ
 
-Medium
+Trung bình
 
-## Related tests
+## Test liên quan
 
 `TC_CAT_02`, `TC_CAT_03`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in as an administrator.
-2. Submit an empty category name or a name containing spaces only.
+1. Đăng nhập bằng tài khoản admin.
+2. Gửi tên danh mục rỗng hoặc chỉ chứa khoảng trắng.
 
-## Expected result
+## Kết quả mong đợi
 
-The API returns HTTP 400 and the UI displays a validation error.
+API trả về HTTP 400 và giao diện hiển thị lỗi validation.
 
-## Actual result
+## Kết quả thực tế
 
-The API returns HTTP 200 and inserts a blank category.
+API trả về HTTP 200 và thêm một danh mục trống.
 
-## Evidence
+## Bằng chứng
 
-![FR-14 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)
+![Playwright report FR-14](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)

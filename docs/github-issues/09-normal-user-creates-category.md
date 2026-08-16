@@ -1,28 +1,28 @@
-## Feature
+## Chức năng
 
-FR-14 – Category management
+FR-14 – Quản lý danh mục
 
-## Severity
+## Mức độ
 
-Critical
+Nghiêm trọng
 
-## Related test
+## Test liên quan
 
 `TC_CAT_09`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in as a normal user.
-2. Send `POST /api/categories` with that user's JWT and a valid category name.
+1. Đăng nhập bằng người dùng thường.
+2. Gửi `POST /api/categories` bằng JWT của người dùng đó cùng tên danh mục hợp lệ.
 
-## Expected result
+## Kết quả mong đợi
 
-The API returns HTTP 403 and does not create a category.
+API trả về HTTP 403 và không tạo danh mục.
 
-## Actual result
+## Kết quả thực tế
 
-The API returns HTTP 200 and creates the category. Authentication is checked, but the administrator role is not enforced.
+API trả về HTTP 200 và tạo danh mục. Hệ thống kiểm tra authentication nhưng không bắt buộc role admin.
 
-## Evidence
+## Bằng chứng
 
-![FR-14 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)
+![Playwright report FR-14](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)

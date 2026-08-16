@@ -1,69 +1,81 @@
-# AI Audit Report
+# BÁO CÁO KIỂM TOÁN AI
 
-## Declaration
+## Tuyên bố
 
-**I use AI tools for the following tasks:** interpreting HW04 requirements, identifying the three features selected in HW02, transferring the SUT, planning the workflow, generating and reviewing Playwright automation, analysing execution failures, creating reports, drafting documentation, and creating an Agent Skill.
+**Tôi sử dụng công cụ AI cho các công việc sau:** diễn giải yêu cầu HW04, xác định ba chức năng đã chọn trong HW02, chuyển SUT, lập kế hoạch, tạo và rà soát automation Playwright, phân tích failure, tạo report, soạn tài liệu và xây dựng Agent Skill.
 
-AI tool: **OpenAI Codex (GPT-5 family)**  
-Session date: **2026-08-14**  
-Timezone: **Asia/Saigon (UTC+07:00)**
+- Công cụ AI: **OpenAI Codex (họ mô hình GPT-5)**
+- Thời gian làm việc: **2026-08-14 đến 2026-08-16**
+- Múi giờ: **Asia/Saigon (UTC+07:00)**
 
-## Interaction log
+## Nhật ký tương tác
 
-### Interaction 1 – 18:30–18:39
+### Tương tác 1 – 18:30–18:39 ngày 2026-08-14
 
 - Prompt: `Hãy đọc file 2026.HW04.Automation Testing_En, dịch sang tiếng việt và giải thích cho tôi phải làm những gì`
-- AI output: Extracted all eight PDF pages, translated the requirements, and produced a checklist including three features, at least 36 cases, three browsers, eight test-script commits, reports, video, audit, critique, and Agent Skill.
-- Human review/action: Confirmed that HW04 uses the same Pool A–C features from HW02 and that Pool D is excluded.
+- Kết quả AI: Trích xuất tám trang PDF, dịch yêu cầu và lập checklist gồm ba chức năng, tối thiểu 36 test case, ba trình duyệt, tám commit test script, report, video, audit, critique và Agent Skill.
+- Con người rà soát/thực hiện: Xác nhận HW04 dùng lại các chức năng nhóm A–C của HW02 và loại nhóm D.
 
-### Interaction 2 – approximately 18:39
+### Tương tác 2 – khoảng 18:39 ngày 2026-08-14
 
 - Prompt: `hãy đọc HW2 để biết tôi đã làm những chức năng nào`
-- AI output: Read the HW02 Main Report and identified FR-01, FR-11, FR-14, and the excluded mobile feature.
-- Human review/action: Selected FR-01, FR-11, and FR-14 for HW04.
+- Kết quả AI: Đọc Main Report HW02, xác định FR-01, FR-11, FR-14 và chức năng mobile bị loại.
+- Con người rà soát/thực hiện: Chọn FR-01, FR-11 và FR-14 cho HW04.
 
-### Interaction 3 – approximately 18:40–18:45
+### Tương tác 3 – khoảng 18:40–18:45 ngày 2026-08-14
 
 - Prompt: `hãy chuyển`
-- AI output: Copied 66 tracked SUT files from the lecturer repository into HW4 while preserving the current `.git`; stored the original SUT README as `ESHOP_README.md`.
-- Human review/action: Confirmed the current repository remote and retained the HW4 README.
+- Kết quả AI: Chuyển 66 file SUT được Git theo dõi từ repository giảng viên vào HW4, giữ nguyên `.git` hiện tại và lưu README gốc thành `ESHOP_README.md`.
+- Con người rà soát/thực hiện: Xác nhận remote hiện tại và giữ README của HW4.
 
-### Interaction 4 – approximately 18:45–19:01
+### Tương tác 4 – khoảng 18:45–19:01 ngày 2026-08-14
 
-- Prompt: `Giờ tôi cần làm gì tiếp theo`, followed by student ID `23127414` and `làm đi`.
-- AI output: Proposed the implementation order, configured Playwright for three browsers, added report metadata, created 12 data-driven FR-01 tests, installed browsers, ran the suite, and committed the result.
-- Human review/action: Supplied the student ID. The first run exposed an `import.meta` module error; the generated path logic was corrected to use `process.cwd()`.
-- Evidence: commit `4d4fdd2`; `reports/fr01`.
+- Prompt: `Giờ tôi cần làm gì tiếp theo`, sau đó cung cấp MSSV `23127414` và yêu cầu `làm đi`.
+- Kết quả AI: Đề xuất thứ tự cài đặt, cấu hình Playwright cho ba trình duyệt, thêm metadata report, tạo 12 test FR-01 theo data-driven, cài trình duyệt, chạy suite và commit kết quả.
+- Con người rà soát/thực hiện: Cung cấp MSSV. Lượt chạy đầu phát hiện lỗi module do `import.meta`; logic đường dẫn được sửa thành `process.cwd()`.
+- Bằng chứng: commit `4d4fdd2`; `reports/fr01`.
 
-### Interaction 5 – 19:29–19:34
+### Tương tác 5 – 19:29–19:34 ngày 2026-08-14
 
 - Prompt: `làm tiếp đi`
-- AI output: Implemented 15 FR-11 cases using unique API fixtures, status transitions, ownership assertions, Page Objects, and multi-browser evidence.
-- Human review/action: Kept the Vietnamese currency assertion aligned with the requirement after all browsers rendered commas.
-- Evidence: commits `570603f`, `bc0b6c8`, `57297df`; `reports/fr11`.
+- Kết quả AI: Cài đặt 15 test case FR-11 với API fixture duy nhất, chuyển trạng thái, assertion quyền sở hữu, Page Object và bằng chứng đa trình duyệt.
+- Con người rà soát/thực hiện: Giữ assertion định dạng tiền Việt Nam đúng yêu cầu sau khi cả ba trình duyệt đều hiển thị dấu phẩy.
+- Bằng chứng: commit `570603f`, `bc0b6c8`, `57297df`; `reports/fr11`.
 
-### Interaction 6 – 19:36–19:40
+### Tương tác 6 – 19:36–19:40 ngày 2026-08-14
 
-- Prompt: continuation of `làm tiếp đi`.
-- AI output: Implemented 12 FR-14 cases covering creation, listing, deletion, validation, authorization, and boundaries; retained consistent SUT failures.
-- Human review/action: Strengthened negative tests to assert 400/403/404/409 status codes and used controlled fixtures for deterministic 0/1 UI boundaries.
-- Evidence: commits `b94db66`, `fb04aed`, `73faecf`; `reports/fr14`.
+- Prompt: tiếp tục yêu cầu `làm tiếp đi`.
+- Kết quả AI: Cài đặt 12 test case FR-14, bao phủ tạo, hiển thị, xóa, validation, authorization và giá trị biên; giữ lại failure SUT nhất quán.
+- Con người rà soát/thực hiện: Tăng độ chặt của negative test bằng assertion HTTP 400/403/404/409 và dùng fixture kiểm soát cho biên giao diện 0/1.
+- Bằng chứng: commit `b94db66`, `fb04aed`, `73faecf`; `reports/fr14`.
 
-### Interaction 7 – 19:41–19:43
+### Tương tác 7 – 19:41–19:43 ngày 2026-08-14
 
-- Prompt: continuation of the automation request.
-- AI output: Added completeness guards requiring at least 12 unique case IDs per feature, archived the FR-01 report, and created the eighth counted test commit.
-- Human review/action: Verified 39 unique cases, 117 browser executions, report metadata, and a clean database/worktree.
-- Evidence: commit `d913bfa`.
+- Prompt: tiếp tục yêu cầu automation.
+- Kết quả AI: Thêm điều kiện tối thiểu 12 ID duy nhất cho mỗi chức năng, lưu report FR-01 và tạo commit test thứ tám được tính.
+- Con người rà soát/thực hiện: Xác minh 39 test case duy nhất, 117 lượt thực thi, metadata report và trạng thái cơ sở dữ liệu/worktree.
+- Bằng chứng: commit `d913bfa`.
 
-### Interaction 8 – after 19:43
+### Tương tác 8 – sau 19:43 ngày 2026-08-14
 
 - Prompt: `Làm đi, cái nào bạn ko làm được thì để lại`
-- AI output: Created the Main Report, Bug Report, issue drafts, AI Audit Report, AI Critique, README summary, Git log, submission/video checklists, evidence screenshots, PDFs, and a validated reusable Agent Skill.
-- Human review/action required: Record and upload the real video, authenticate GitHub, create Issues, add final URLs, and review the self-assessed grade before submission.
+- Kết quả AI: Tạo Main Report, Bug Report, nội dung Issue, AI Audit Report, AI Critique, README, Git log, checklist, screenshot bằng chứng, PDF và Agent Skill có thể tái sử dụng.
+- Con người rà soát/thực hiện: Đăng nhập GitHub, cho phép tạo chín Issues và tự quay hai video thật.
 
-## Review summary
+### Tương tác 9 – ngày 2026-08-16
 
-AI-generated material was not accepted blindly. Corrections included path loading, selector scoping, test-data isolation, response-based waits, API prerequisite setup, exact negative status assertions, controlled boundary fixtures, database restoration, and preserving requirement-based assertions for repeatable SUT defects.
+- Prompt: yêu cầu Việt hóa Agent Skill, tách hai kịch bản video và áp dụng skill để đánh giá FR-11.
+- Kết quả AI: Việt hóa skill cùng validator, viết hai kịch bản video, chạy lại FR-11 trên ba trình duyệt và xác nhận 42 lượt thành công, 3 lượt thất bại do cùng lỗi định dạng tiền.
+- Con người rà soát/thực hiện: Thực hiện video Task 2 và video Agent Skill bằng lời thuyết minh tiếng Việt; cung cấp hai URL YouTube Unlisted.
 
-The original Codex conversation remains the authoritative raw interaction transcript. This appendix summarizes each material interaction and links the resulting files and commits.
+### Tương tác 10 – ngày 2026-08-16
+
+- Prompt: cung cấp URL video, yêu cầu tự đánh giá tối đa và đóng gói đúng nội dung đề bài.
+- Kết quả AI: Cập nhật report/README, tự đánh giá 100/100, xuất lại PDF, commit, push và tạo ZIP tối giản không chứa source code nhưng có đầy đủ tài liệu, HTML report, bằng chứng lỗi và Agent Skill.
+- Con người rà soát/thực hiện: Xác nhận nội dung video và phạm vi ZIP cuối.
+
+## Tóm tắt rà soát
+
+Nội dung do AI tạo không được chấp nhận nguyên trạng. Các phần đã sửa gồm cách nạp đường dẫn, phạm vi locator, cô lập dữ liệu, chờ theo response, chuẩn bị điều kiện trước qua API, assertion chính xác HTTP status, fixture biên có kiểm soát, khôi phục cơ sở dữ liệu và giữ assertion theo yêu cầu khi phát hiện lỗi SUT có thể tái hiện.
+
+Cuộc hội thoại Codex gốc là bản ghi tương tác đầy đủ có thẩm quyền. Phụ lục này tóm tắt các tương tác quan trọng và liên kết chúng với file cùng commit tương ứng.

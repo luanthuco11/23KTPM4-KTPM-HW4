@@ -1,28 +1,22 @@
-# Submission Checklist
+# CHECKLIST NỘP BÀI
 
-- [x] FR-01 automation: at least 12 cases, three browsers.
-- [x] FR-11 automation: at least 12 cases, three browsers.
-- [x] FR-14 automation: at least 12 cases, three browsers.
-- [x] External JSON data and at least three assertion patterns.
-- [x] HTML reports with student ID and ISO timestamp.
-- [x] Main Report in Markdown.
-- [x] Main Report PDF generated and visually reviewed.
-- [x] AI Audit Report in Markdown.
-- [x] AI Audit Report PDF generated and visually reviewed.
-- [x] AI Critique in Markdown, 200–300 words.
-- [x] AI Critique PDF generated and visually reviewed.
-- [x] Git commit log text file.
-- [x] Eight commits that change test scripts.
-- [x] Bug report and screenshots prepared.
-- [x] Authenticate GitHub and create nine Issues with screenshots.
-- [x] Agent Skill created and validated.
-- [x] Record Agent Skill demonstration and provide its URL.
-- [x] Add Task 2 video URL to README and Main Report: https://youtu.be/wVz2drOVd2E.
-- [x] Verify Task 2 video is Unlisted, at least five minutes, and narrated in Vietnamese.
-- [x] Verify Task 2 video shows face-cam or `whoami` and `hostname`.
-- [x] Add Agent Skill video URL to README and Main Report: https://youtu.be/lPOh3j1v4oU.
-- [x] Verify Agent Skill video demonstrates one complete feature from invocation to conclusion.
-- [x] Push automation, reports, PDFs, evidence, and Agent Skill to the public GitHub repository.
-- [x] Recalculate self-assessment: 100/100; ZIP name `23127414_HW04_AI_Automation_100.zip`.
-- [x] Export ZIP and verify every required file is included.
-- [ ] Submit to Moodle before the deadline.
+- [x] FR-01 có ít nhất 12 test case và chạy trên ba trình duyệt.
+- [x] FR-11 có ít nhất 12 test case và chạy trên ba trình duyệt.
+- [x] FR-14 có ít nhất 12 test case và chạy trên ba trình duyệt.
+- [x] Dữ liệu JSON tách riêng và có ít nhất ba dạng assertion.
+- [x] HTML report có MSSV và timestamp ISO.
+- [x] Main Report có bản Markdown và PDF đã kiểm tra.
+- [x] AI Audit Report có bản Markdown và PDF đã kiểm tra.
+- [x] AI Critique có 200–300 từ, gồm bản Markdown và PDF đã kiểm tra.
+- [x] Có Git commit log dạng text.
+- [x] Có tám commit thay đổi test script.
+- [x] Có Bug Report, screenshot và chín GitHub Issues.
+- [x] Agent Skill đã tạo, Việt hóa và xác thực.
+- [x] Video demo Task 2: https://youtu.be/wVz2drOVd2E.
+- [x] Video Task 2 ở chế độ Unlisted, dài ít nhất năm phút, thuyết minh tiếng Việt và có bằng chứng danh tính.
+- [x] Video demo Agent Skill: https://youtu.be/lPOh3j1v4oU.
+- [x] Video Agent Skill trình diễn một chức năng hoàn chỉnh từ lúc gọi skill đến kết luận.
+- [x] Automation, report, PDF, bằng chứng và Agent Skill đã được push lên repository công khai.
+- [x] Điểm tự đánh giá: 100/100.
+- [x] ZIP `23127414_HW04_AI_Automation_100.zip` đã được tạo và kiểm tra nội dung.
+- [ ] Nộp ZIP lên Moodle trước hạn.

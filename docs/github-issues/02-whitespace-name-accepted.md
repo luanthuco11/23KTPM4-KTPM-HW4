@@ -1,30 +1,30 @@
-## Feature
+## Chức năng
 
-FR-01 – Account registration
+FR-01 – Đăng ký tài khoản
 
-## Severity
+## Mức độ
 
-Medium
+Trung bình
 
-## Related test
+## Test liên quan
 
 `TC_REG_03`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open the registration page.
-2. Enter three spaces as the name.
-3. Enter an email and a password that reaches submission.
-4. Submit the form.
+1. Mở trang đăng ký.
+2. Nhập ba khoảng trắng làm tên.
+3. Nhập email và mật khẩu cho phép gửi form.
+4. Gửi form.
 
-## Expected result
+## Kết quả mong đợi
 
-A name validation error is displayed and the user remains on registration.
+Hiển thị lỗi validation tên và người dùng vẫn ở trang đăng ký.
 
-## Actual result
+## Kết quả thực tế
 
-The account is created and the UI redirects to login.
+Tài khoản được tạo và giao diện chuyển đến trang đăng nhập.
 
-## Evidence
+## Bằng chứng
 
-![FR-01 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr01-report-summary.png)
+![Playwright report FR-01](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr01-report-summary.png)

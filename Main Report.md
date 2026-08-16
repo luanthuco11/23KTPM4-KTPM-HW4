@@ -1,166 +1,166 @@
-# HW04 – Automation Testing Main Report
+# BÁO CÁO CHÍNH HW04 – KIỂM THỬ TỰ ĐỘNG
 
-## 1. Student and assignment information
+## 1. Thông tin sinh viên và bài tập
 
-- Student ID: **23127414**
-- Assignment: **HW04 – Automation Testing**
-- SUT: **EShop**
-- Automation framework: **Playwright 1.62.1**
-- Browsers: **Chromium, Firefox, WebKit**
-- AI declaration: **I use AI tools for the following tasks:** requirement analysis, test-data drafting, Playwright scaffolding, code review, execution analysis, report preparation, and Agent Skill creation. All generated work was reviewed and executed against the real SUT.
+- Mã số sinh viên: **23127414**
+- Bài tập: **HW04 – Automation Testing**
+- Hệ thống được kiểm thử (SUT): **EShop**
+- Framework kiểm thử: **Playwright 1.62.1**
+- Trình duyệt: **Chromium, Firefox, WebKit**
+- Tuyên bố sử dụng AI: **Tôi sử dụng công cụ AI cho các công việc sau:** phân tích yêu cầu, soạn dữ liệu kiểm thử, dựng khung Playwright, rà soát mã, phân tích kết quả thực thi, chuẩn bị báo cáo và xây dựng Agent Skill. Toàn bộ nội dung do AI hỗ trợ đều được con người rà soát và chạy trên SUT thực tế.
 
-## 2. Feature selection
+## 2. Lựa chọn chức năng
 
-The same three web features selected in HW02 were automated:
+Ba chức năng web đã chọn trong HW02 được tiếp tục tự động hóa:
 
-| Pool | ID | Feature |
+| Nhóm | ID | Chức năng |
 |---|---|---|
-| A | FR-01 | Account registration |
-| B | FR-11 | User order history view |
-| C | FR-14 | Category management |
+| A | FR-01 | Đăng ký tài khoản |
+| B | FR-11 | Xem lịch sử đơn hàng của người dùng |
+| C | FR-14 | Quản lý danh mục |
 
-The HW02 mobile feature was excluded because HW04 requires web frontend automation.
+Chức năng mobile của HW02 không được sử dụng vì HW04 yêu cầu tự động hóa web frontend.
 
-## 3. Automation design
+## 3. Thiết kế bộ kiểm thử tự động
 
-The suite uses a data-driven Page Object structure:
+Bộ kiểm thử sử dụng Page Object theo hướng data-driven:
 
-- `tests/data`: external JSON test data.
-- `tests/pages`: UI locators and interactions.
-- `tests/support`: API setup helpers for deterministic prerequisites.
-- `tests/specs`: feature specifications and assertions.
-- `reports`: archived execution evidence.
+- `tests/data`: dữ liệu kiểm thử JSON tách riêng.
+- `tests/pages`: locator và thao tác giao diện.
+- `tests/support`: các hàm API chuẩn bị điều kiện trước một cách xác định.
+- `tests/specs`: test script và assertion của từng chức năng.
+- `reports`: bằng chứng thực thi đã lưu trữ.
 
-The Playwright configuration executes every feature on Chromium, Firefox, and WebKit. Failed tests retain screenshots, video, and traces. Report metadata contains `Run by: 23127414` and an ISO timestamp.
+Cấu hình Playwright chạy mọi chức năng trên Chromium, Firefox và WebKit. Test thất bại giữ lại screenshot, video và trace. Metadata của report có `Run by: 23127414` cùng timestamp theo chuẩn ISO.
 
-At least three assertion patterns are used, including URL assertions, visibility, text, count, class, input validity, response status, collection length, and boolean ownership checks.
+Bộ kiểm thử sử dụng ít nhất ba dạng assertion, gồm kiểm tra URL, trạng thái hiển thị, nội dung, số lượng, class, tính hợp lệ của input, HTTP status, độ dài collection và quyền sở hữu dữ liệu.
 
-## 4. Execution summary
+## 4. Tóm tắt kết quả thực thi
 
-| Feature | Cases | Executions | Passed | Failed | Report timestamp (UTC) |
+| Chức năng | Số test case | Lượt thực thi | Thành công | Thất bại | Timestamp report (UTC) |
 |---|---:|---:|---:|---:|---|
 | FR-01 | 12 | 36 | 12 | 24 | 2026-08-14T12:41:07.395Z |
 | FR-11 | 15 | 45 | 42 | 3 | 2026-08-14T12:32:37.193Z |
 | FR-14 | 12 | 36 | 18 | 18 | 2026-08-14T12:38:54.878Z |
-| **Total** | **39** | **117** | **72** | **45** | |
+| **Tổng cộng** | **39** | **117** | **72** | **45** | |
 
-There were nine feature–browser runs: three features multiplied by three browsers. All failures listed below reproduced consistently across all three browsers.
+Có chín lượt chạy chức năng–trình duyệt: ba chức năng nhân với ba trình duyệt. Các failure được trình bày dưới đây đều tái hiện ổn định trên cả ba trình duyệt.
 
-## 5. FR-01 – Account registration
+## 5. FR-01 – Đăng ký tài khoản
 
-### Scope and data
+### Phạm vi và dữ liệu
 
-Twelve cases cover successful registration, required fields, whitespace-only names, invalid email partitions, weak passwords, and the eight-character password boundary. Data is stored in `tests/data/registration.json`.
+Mười hai test case bao phủ đăng ký thành công, trường bắt buộc, tên chỉ chứa khoảng trắng, các phân vùng email không hợp lệ, mật khẩu yếu và giá trị biên tám ký tự của mật khẩu. Dữ liệu nằm trong `tests/data/registration.json`.
 
-### Results
+### Kết quả
 
-- 12 passed executions.
-- 24 failed executions.
-- Eight failing cases reproduced on all three browsers.
+- 12 lượt thực thi thành công.
+- 24 lượt thực thi thất bại.
+- Tám test case thất bại được tái hiện trên cả ba trình duyệt.
 
-### Genuine defects
+### Lỗi thật của SUT
 
-1. A password containing a real special character is rejected because the frontend regular expression requires whitespace instead.
-2. A whitespace-only name is accepted.
-3. Invalid email forms are accepted because the field is `type="text"` and neither frontend nor backend validates the format.
+1. Mật khẩu chứa ký tự đặc biệt hợp lệ bị từ chối vì regex frontend yêu cầu khoảng trắng thay cho ký tự đặc biệt.
+2. Tên chỉ chứa khoảng trắng vẫn được chấp nhận.
+3. Các định dạng email không hợp lệ vẫn được chấp nhận vì input dùng `type="text"` và cả frontend lẫn backend đều không kiểm tra định dạng.
 
-### Human review of AI output
+### Con người rà soát kết quả AI
 
-The initial generated approach could allow email tests to fail for the wrong reason: the flawed password expression blocked the request before email validation was reached. The final tests use a password containing whitespace only in the targeted invalid-email cases to pass the SUT's flawed gate and isolate the email behavior. Unique email values were added to prevent cross-browser collisions. The JSON loader was also changed from `import.meta` to a working-directory path after the first execution exposed a module-loading error. Form-scoped locators were retained only where the SUT lacks `htmlFor` label associations.
+Phương án AI ban đầu có thể làm test email thất bại sai nguyên nhân: biểu thức mật khẩu bị lỗi chặn request trước khi hệ thống kiểm tra email. Bản cuối sử dụng mật khẩu chứa khoảng trắng riêng cho các test email không hợp lệ để vượt qua cổng kiểm tra sai của SUT và cô lập đúng hành vi email. Giá trị email duy nhất được thêm vào để ngăn xung đột giữa các trình duyệt. Cách nạp JSON cũng được đổi từ `import.meta` sang đường dẫn dựa trên thư mục làm việc sau khi lượt chạy đầu phát hiện lỗi module. Locator giới hạn trong form chỉ được giữ ở nơi SUT thiếu liên kết `htmlFor` cho label.
 
-## 6. FR-11 – User order history
+## 6. FR-11 – Xem lịch sử đơn hàng
 
-### Scope and data
+### Phạm vi và dữ liệu
 
-Fifteen cases cover authenticated access, empty state, unauthenticated access, ownership isolation, five translated statuses and colors, required columns, currency formatting, and 0/1 boundaries. Data is stored in `tests/data/order-history.json`.
+Mười lăm test case bao phủ truy cập đã đăng nhập, empty state, truy cập chưa đăng nhập, cô lập quyền sở hữu, năm trạng thái cùng màu hiển thị, các cột bắt buộc, định dạng tiền và biên 0/1. Dữ liệu nằm trong `tests/data/order-history.json`.
 
-API setup creates unique users and orders for each worker. Order statuses follow the backend's valid transition path before the UI assertion is made.
+Bước chuẩn bị qua API tạo người dùng và đơn hàng duy nhất cho từng worker. Trạng thái đơn hàng đi theo lộ trình chuyển trạng thái hợp lệ của backend trước khi kiểm tra giao diện.
 
-### Results
+### Kết quả
 
-- 42 passed executions.
-- 3 failed executions.
-- The same currency defect reproduced on all three browsers.
+- 42 lượt thực thi thành công.
+- 3 lượt thực thi thất bại.
+- Cùng một lỗi định dạng tiền tái hiện trên cả ba trình duyệt.
 
-### Genuine defect
+### Lỗi thật của SUT
 
-The UI calls `toLocaleString()` without specifying `vi-VN`, producing `1,250,000 ₫` in the test environment instead of the required Vietnamese representation `1.250.000 ₫`.
+Giao diện gọi `toLocaleString()` nhưng không chỉ định `vi-VN`, vì vậy môi trường kiểm thử hiển thị `1,250,000 ₫` thay cho định dạng Việt Nam được yêu cầu là `1.250.000 ₫`.
 
-### Human review of AI output
+### Con người rà soát kết quả AI
 
-Fixed waits were avoided. The Page Object waits for the real `my-orders` response before checking the table. Data isolation is asserted against every returned `user_id`, not only by checking the visible row count. Boundary cases use isolated users or controlled category-like fixtures rather than relying on an unknown shared database state.
+Không sử dụng fixed wait. Page Object chờ phản hồi thật của API `my-orders` trước khi kiểm tra bảng. Việc cô lập dữ liệu được assertion trên mọi `user_id` trả về, không chỉ dựa vào số dòng nhìn thấy. Các test biên dùng người dùng tách biệt hoặc fixture được kiểm soát thay vì phụ thuộc trạng thái không xác định của cơ sở dữ liệu dùng chung.
 
-## 7. FR-14 – Category management
+## 7. FR-14 – Quản lý danh mục
 
-### Scope and data
+### Phạm vi và dữ liệu
 
-Twelve cases cover creation, list display, deletion, blank and whitespace names, referenced categories, missing IDs, duplicates, non-admin access, one-character names, and 0/1 list boundaries. Data is stored in `tests/data/categories.json`.
+Mười hai test case bao phủ tạo mới, hiển thị danh sách, xóa, tên rỗng hoặc chỉ có khoảng trắng, danh mục đang được sản phẩm tham chiếu, ID không tồn tại, tên trùng, truy cập không có quyền admin, tên một ký tự và biên danh sách 0/1. Dữ liệu nằm trong `tests/data/categories.json`.
 
-### Results
+### Kết quả
 
-- 18 passed executions.
-- 18 failed executions.
-- Six failing cases reproduced on all three browsers.
+- 18 lượt thực thi thành công.
+- 18 lượt thực thi thất bại.
+- Sáu test case thất bại được tái hiện trên cả ba trình duyệt.
 
-### Genuine defects
+### Lỗi thật của SUT
 
-1. Empty and whitespace-only names are accepted.
-2. Duplicate names are accepted.
-3. A category referenced by a product can be deleted.
-4. Deleting a nonexistent ID returns success.
-5. A regular user token can create categories because role authorization is missing.
+1. Tên rỗng và tên chỉ chứa khoảng trắng vẫn được chấp nhận.
+2. Tên danh mục trùng vẫn được chấp nhận.
+3. Danh mục đang được sản phẩm tham chiếu vẫn có thể bị xóa.
+4. Xóa ID không tồn tại vẫn trả về thành công.
+5. Token của người dùng thường có thể tạo danh mục vì thiếu kiểm tra role.
 
-### Human review of AI output
+### Con người rà soát kết quả AI
 
-The final suite checks HTTP status codes for negative API behavior rather than treating any completed request as success. It creates its own referenced category and product instead of depending on seed IDs. The 0/1 rendering boundaries mock only the category GET response, keeping the UI assertion deterministic without rewriting the SUT database.
+Bộ test cuối kiểm tra chính xác HTTP status cho hành vi API không hợp lệ thay vì coi mọi request hoàn tất là thành công. Test tự tạo danh mục và sản phẩm tham chiếu thay vì phụ thuộc seed ID. Test biên hiển thị 0/1 chỉ mock phản hồi GET danh mục, nhờ đó assertion giao diện có tính xác định mà không ghi lại cơ sở dữ liệu SUT.
 
-## 8. Defect analysis
+## 8. Phân tích lỗi
 
-Nine distinct bugs are documented in `docs/Bug Report.md`. A failed automated test is classified as a SUT defect only when:
+Chín lỗi khác nhau được ghi nhận trong `docs/Bug Report.md`. Một automated test thất bại chỉ được phân loại là lỗi SUT khi:
 
-1. the assertion matches the written requirement;
-2. the failure repeats across Chromium, Firefox, and WebKit;
-3. screenshot, trace, or response evidence exists; and
-4. the automation path was reviewed for selector, wait, data, and assertion errors.
+1. assertion phù hợp với yêu cầu đã viết;
+2. failure lặp lại trên Chromium, Firefox và WebKit;
+3. có screenshot, trace hoặc bằng chứng response; và
+4. luồng automation đã được rà soát về selector, cách chờ, dữ liệu và assertion.
 
-## 9. AI gap analysis
+## 9. Phân tích khoảng trống của AI
 
-AI accelerated scaffolding and repetitive conversion, but it initially lacked three kinds of context: the intentional bugs in the SUT, the need for single-fault test isolation, and shared database behavior across browser workers. Human review added unique test data, API prerequisites, status-transition setup, deterministic boundary fixtures, report metadata validation, and database restoration. AI output was therefore treated as a draft, not as accepted test evidence.
+AI giúp tăng tốc việc dựng khung và chuyển đổi các phần lặp lại, nhưng ban đầu thiếu ba loại ngữ cảnh: các lỗi được cài có chủ đích trong SUT, yêu cầu cô lập một nguyên nhân lỗi cho mỗi test và trạng thái cơ sở dữ liệu dùng chung giữa các browser worker. Con người bổ sung dữ liệu duy nhất, điều kiện trước qua API, thiết lập chuyển trạng thái, fixture biên có tính xác định, kiểm tra metadata report và khôi phục cơ sở dữ liệu. Vì vậy, kết quả AI được xem là bản nháp chứ không phải bằng chứng kiểm thử đã được chấp nhận.
 
-## 10. Reproducibility and evidence
+## 10. Khả năng tái hiện và bằng chứng
 
-- Reports: `reports/fr01`, `reports/fr11`, and `reports/fr14`.
-- Test data: `tests/data`.
-- Test scripts: `tests/specs`.
-- Evidence screenshots: `docs/bug-evidence`.
-- Git history: eight commits that modify `.spec.ts` files.
+- HTML report: `reports/fr01`, `reports/fr11` và `reports/fr14`.
+- Dữ liệu kiểm thử: `tests/data`.
+- Test script: `tests/specs`.
+- Screenshot bằng chứng: `docs/bug-evidence`.
+- Lịch sử Git: tám commit có thay đổi file `.spec.ts`.
 - Agent Skill: `agent-skills/eshop-playwright-automation`.
 
-## 11. Submission evidence
+## 11. Bằng chứng nộp bài
 
-### Video evidence
+### Bằng chứng video
 
-- Task 2 demo video: [YouTube – Unlisted](https://youtu.be/wVz2drOVd2E).
-- Agent Skill demonstration video: [YouTube – Unlisted](https://youtu.be/lPOh3j1v4oU).
-- The Task 2 video is declared to contain at least five minutes of Vietnamese narration and identity evidence.
-- The Agent Skill video is declared to demonstrate one complete feature from invocation through validation, execution, report review, failure classification, and conclusion.
-- Nine GitHub Issues with screenshots have been created in the student's public repository.
+- Video demo Task 2: [YouTube – Không công khai](https://youtu.be/wVz2drOVd2E).
+- Video demo Agent Skill: [YouTube – Không công khai](https://youtu.be/lPOh3j1v4oU).
+- Video Task 2 được xác nhận dài ít nhất năm phút, có thuyết minh tiếng Việt và bằng chứng danh tính.
+- Video Agent Skill được xác nhận trình diễn một chức năng hoàn chỉnh từ lúc gọi skill, kiểm tra, thực thi, đọc report, phân loại failure đến kết luận.
+- Chín GitHub Issues có screenshot đã được tạo trong repository công khai của sinh viên.
 
-Prepared scripts and published Issue links are included in `docs/Video Script.md` and `docs/GitHub Issue Drafts.md`.
+Kịch bản đã chuẩn bị và liên kết Issue được lưu trong `docs/Video Script.md` và `docs/GitHub Issue Drafts.md`.
 
-### Self-assessment
+### Tự đánh giá
 
-| Criterion | Maximum | Self-assessed |
+| Tiêu chí | Điểm tối đa | Điểm tự đánh giá |
 |---|---:|---:|
-| Task 1 – Feature A (FR-01) | 25 | 25 |
-| Task 1 – Feature B (FR-11) | 25 | 25 |
-| Task 1 – Feature C (FR-14) | 25 | 25 |
-| Task 2 – Demo video | 15 | 15 |
+| Task 1 – Chức năng A (FR-01) | 25 | 25 |
+| Task 1 – Chức năng B (FR-11) | 25 | 25 |
+| Task 1 – Chức năng C (FR-14) | 25 | 25 |
+| Task 2 – Video demo | 15 | 15 |
 | Agent Skill | 10 | 10 |
-| **Total** | **100** | **100** |
+| **Tổng cộng** | **100** | **100** |
 
-Suggested submission filename: `23127414_HW04_AI_Automation_100.zip`.
+Tên file nộp bài: `23127414_HW04_AI_Automation_100.zip`.
 
-## 12. Conclusion
+## 12. Kết luận
 
-The completed suite automates 39 test cases and 117 browser executions. It preserves failing assertions that expose nine repeatable defects and includes data files, scripts, multi-browser HTML reports, human-review notes, commit evidence, and a validated reusable Agent Skill.
+Bộ kiểm thử hoàn chỉnh tự động hóa 39 test case với 117 lượt thực thi trên trình duyệt. Các assertion thất bại làm lộ ra chín lỗi có thể tái hiện được giữ nguyên. Bài nộp có dữ liệu, test script, HTML report đa trình duyệt, ghi chú con người rà soát, bằng chứng commit và Agent Skill có thể tái sử dụng đã được xác thực.

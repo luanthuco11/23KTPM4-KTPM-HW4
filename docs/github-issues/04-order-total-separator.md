@@ -1,28 +1,28 @@
-## Feature
+## Chức năng
 
-FR-11 – User order history
+FR-11 – Xem lịch sử đơn hàng
 
-## Severity
+## Mức độ
 
-Low
+Thấp
 
-## Related test
+## Test liên quan
 
 `TC_ORD_10`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in as a user with an order whose `total_amount` is `1250000`.
-2. Open the order history page.
+1. Đăng nhập bằng người dùng có đơn hàng với `total_amount = 1250000`.
+2. Mở trang lịch sử đơn hàng.
 
-## Expected result
+## Kết quả mong đợi
 
-The amount is displayed as `1.250.000 ₫` for the Vietnamese locale.
+Số tiền hiển thị là `1.250.000 ₫` theo locale Việt Nam.
 
-## Actual result
+## Kết quả thực tế
 
-The amount is displayed as `1,250,000 ₫`. `toLocaleString()` is called without the `vi-VN` locale.
+Số tiền hiển thị là `1,250,000 ₫`. `toLocaleString()` được gọi mà không có locale `vi-VN`.
 
-## Evidence
+## Bằng chứng
 
-![FR-11 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr11-report-summary.png)
+![Playwright report FR-11](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr11-report-summary.png)

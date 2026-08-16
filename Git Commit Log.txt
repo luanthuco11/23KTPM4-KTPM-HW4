@@ -1,8 +1,455 @@
-4d4fdd2 2026-08-14T19:01:09+07:00 test(fr01): add data-driven registration automation
-570603f 2026-08-14T19:30:34+07:00 test(fr11): cover order history access and isolation
-bc0b6c8 2026-08-14T19:31:59+07:00 test(fr11): verify order statuses and currency format
-57297df 2026-08-14T19:34:22+07:00 test(fr11): add boundary coverage and execution report
-b94db66 2026-08-14T19:36:54+07:00 test(fr14): cover category access and core operations
-fb04aed 2026-08-14T19:38:25+07:00 test(fr14): expose category validation and deletion defects
-73faecf 2026-08-14T19:40:13+07:00 test(fr14): add boundary coverage and execution report
-d913bfa 2026-08-14T19:43:06+07:00 test: enforce suite completeness and archive FR01 report
+* commit 9549a772bbdd6df2ed099a54a67578e5311757c3
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Sun Aug 16 11:29:38 2026 +0700
+| 
+|     docs: finalize videos skill and submission score
+| 
+|  .gitignore                                        |   2 +-
+|  Main Report.md                                    |  28 +++-
+|  Main Report.pdf                                   | Bin 83593 -> 84462 bytes
+|  README.md                                         |  19 ++-
+|  agent-skills/eshop-playwright-automation/SKILL.md |  52 +++---
+|  .../agents/openai.yaml                            |   6 +-
+|  .../references/review-checklist.md                |  48 +++---
+|  .../scripts/validate-test-data.mjs                |  10 +-
+|  docs/Submission Checklist.md                      |  14 +-
+|  docs/Video 1 - Task 2 Script.md                   | 177 ++++++++++++++++++++
+|  docs/Video 2 - Agent Skill Script.md              | 101 +++++++++++
+|  docs/Video Script.md                              |  72 +++-----
+|  12 files changed, 403 insertions(+), 126 deletions(-)
+| 
+* commit 7e37c9e6246f94df55ae5eb0fb57f67abd67f7b8
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 20:12:44 2026 +0700
+| 
+|     docs: link published defect issues
+| 
+|  README.md                                         |  1 +
+|  docs/GitHub Issue Drafts.md                       | 26 +++++++++---------
+|  docs/Submission Checklist.md                      |  4 +--
+|  docs/github-issues/01-valid-password-rejected.md  | 30 +++++++++++++++++++++
+|  docs/github-issues/02-whitespace-name-accepted.md | 30 +++++++++++++++++++++
+|  docs/github-issues/03-invalid-emails-accepted.md  | 29 ++++++++++++++++++++
+|  docs/github-issues/04-order-total-separator.md    | 28 +++++++++++++++++++
+|  docs/github-issues/05-blank-category-accepted.md  | 28 +++++++++++++++++++
+|  .../06-duplicate-category-accepted.md             | 29 ++++++++++++++++++++
+|  .../07-referenced-category-deleted.md             | 30 +++++++++++++++++++++
+|  .../08-delete-nonexistent-success.md              | 28 +++++++++++++++++++
+|  .../09-normal-user-creates-category.md            | 28 +++++++++++++++++++
+|  12 files changed, 276 insertions(+), 15 deletions(-)
+| 
+* commit a7dbe49ede98126890aa2826586f2ac90b85d9df
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:59:59 2026 +0700
+| 
+|     feat(skill): add reusable EShop Playwright workflow
+| 
+|  agent-skills/eshop-playwright-automation/SKILL.md | 38 +++++++++++++++++++
+|  .../agents/openai.yaml                            |  4 ++
+|  .../references/review-checklist.md                | 32 ++++++++++++++++
+|  .../scripts/validate-test-data.mjs                | 41 +++++++++++++++++++++
+|  4 files changed, 115 insertions(+)
+| 
+* commit e63cf66f67b3c1590a6ddbcb1acecd64c86f9ce9
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:59:49 2026 +0700
+| 
+|     docs: add HW04 reports audit and bug evidence
+| 
+|  AI Audit Report.md                        |  69 ++++++++
+|  AI Audit Report.pdf                       | Bin 0 -> 78089 bytes
+|  AI Critique.md                            |   7 +
+|  AI Critique.pdf                           | Bin 0 -> 74970 bytes
+|  Git Commit Log.txt                        |   8 +
+|  Main Report.md                            | 152 ++++++++++++++++++
+|  Main Report.pdf                           | Bin 0 -> 83593 bytes
+|  README.md                                 |  71 ++++++++-
+|  docs/Bug Report.md                        |  99 ++++++++++++
+|  docs/GitHub Issue Drafts.md               |  17 ++
+|  docs/Submission Checklist.md              |  26 +++
+|  docs/Video Script.md                      |  59 +++++++
+|  docs/bug-evidence/fr01-report-summary.png | Bin 0 -> 110741 bytes
+|  docs/bug-evidence/fr11-report-summary.png | Bin 0 -> 113969 bytes
+|  docs/bug-evidence/fr14-report-summary.png | Bin 0 -> 115455 bytes
+|  scripts/export_markdown_pdfs.py           | 238 ++++++++++++++++++++++++++++
+|  16 files changed, 745 insertions(+), 1 deletion(-)
+| 
+* commit d913bfa2e91724708f83d1f2409bf3e19aae8d2f
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:43:06 2026 +0700
+| 
+|     test: enforce suite completeness and archive FR01 report
+| 
+|  package.json                                      |   2 +
+|  .../036bbdbeecac476272ee738f55e0c7c452872b19.png  | Bin 0 -> 29375 bytes
+|  .../0594c1ddce5a197ecb8b021b0e1e10d5aad12674.webm | Bin 0 -> 87914 bytes
+|  .../09a29b5f7d36738e00b61df341fe583744803e9a.webm | Bin 0 -> 126882 bytes
+|  .../10719693fe6bd7976923796d76fae30ee6c61cb9.md   | 153 +++++++++++++++++
+|  .../133fc36225644fd0116406dcc654a62250c5b7e3.png  | Bin 0 -> 52660 bytes
+|  .../1cc5c7a74dcf7180e82420b237e291a1d5ee2b2e.md   | 153 +++++++++++++++++
+|  .../1f6837bb1fb26e4b741e89d3ce94e11a0d09be93.md   | 153 +++++++++++++++++
+|  .../215a6ebdf1afa03e318d2ee137cca55a7434d99c.zip  | Bin 0 -> 278120 bytes
+|  .../270d4f135934a580ecffd7e2d3209d9a29653dec.zip  | Bin 0 -> 698110 bytes
+|  .../2a5ddfcf09a9012ea743f29d7778d33d0b7a4c24.zip  | Bin 0 -> 241761 bytes
+|  .../3169dd46c446b4a0bec77e46aa5dd5429309560f.webm | Bin 0 -> 99927 bytes
+|  .../36a338923edc1bc2c5d2da3060296c249e120ca1.zip  | Bin 0 -> 137229 bytes
+|  .../3944871f494935f2bcbfa6ee3ad6d8e19803ffb2.zip  | Bin 0 -> 568320 bytes
+|  .../3c403b6ec65f7b4b355124560f2ab24d547f0a55.png  | Bin 0 -> 76548 bytes
+|  .../3d39e6a0f6244c1157ca6772958d7bb9bdc52d23.png  | Bin 0 -> 27534 bytes
+|  .../3fc9ae12d7c5a54019badf445efb49aebf747d7f.webm | Bin 0 -> 105105 bytes
+|  .../457af33656cc0f2d2066b25ec5a6ff6e04e2143f.webm | Bin 0 -> 99497 bytes
+|  .../46be629ea0a0fe755317239c6066392466684553.md   | 153 +++++++++++++++++
+|  .../4a4a15c55737dbca8132585337333d9416f46304.zip  | Bin 0 -> 198505 bytes
+|  .../4ca86e4f18655dbe10e05fe8ed8ad8f1c783e652.webm | Bin 0 -> 117144 bytes
+|  .../4f420d8e6f26a3ff2a3649e4d03c7011097e259a.zip  | Bin 0 -> 728034 bytes
+|  .../4fe598aacfd5bb189d20386688b773cddd4631b2.md   | 154 +++++++++++++++++
+|  .../57aab1e8d611952e9dc853c5f39b0cdf4e912448.zip  | Bin 0 -> 145515 bytes
+|  .../5f92e3dd776ae8f82fdc75ecfa1766ef4384ca54.md   | 154 +++++++++++++++++
+|  .../63ca79b5cbe248f8990bbb4f48716eb13dad509c.md   | 153 +++++++++++++++++
+|  .../6491513f9a2af126615a0ba4c6d9f7ca7b9ed5e3.webm | Bin 0 -> 94800 bytes
+|  .../6c312bdff2d7e187571ea09e6e5cc7770149181e.zip  | Bin 0 -> 218294 bytes
+|  .../71ac77ae384cb0e5f463c866aff700b6f8c58c5c.zip  | Bin 0 -> 184258 bytes
+|  .../71c008430d0f56c14a33aaa8934e12ed31643fce.zip  | Bin 0 -> 180500 bytes
+|  .../72bc0ecbfe58a833e32131e3ff7478ff339c6d40.zip  | Bin 0 -> 179830 bytes
+|  .../789946378076c2836d4938acfa32b546b827d0ce.webm | Bin 0 -> 104700 bytes
+|  .../7bcd91017cc4cf9602f7270f80839b3c07e9d067.zip  | Bin 0 -> 660375 bytes
+|  .../7bf554d50d81c08eba1e320a5316d107c4ad9ff5.zip  | Bin 0 -> 202829 bytes
+|  .../8031ef5c410229a4e5ffc91fda2d9c69e888d704.png  | Bin 0 -> 19443 bytes
+|  .../8531175c1b5b98a595c190a2991a8dc373d0ec6c.webm | Bin 0 -> 128410 bytes
+|  .../85746e3037c0b16577c8d7c7f7ee8a7e0db74bde.zip  | Bin 0 -> 644306 bytes
+|  .../886554e93a7962aab84eb1c667dc0dc9ebe842b8.png  | Bin 0 -> 27711 bytes
+|  .../8a849caf32779cebd9b91390b27ef17d83793f73.webm | Bin 0 -> 121822 bytes
+|  .../8c0c38bf4ec04fb49157209e0454f7c7736bb2df.md   | 153 +++++++++++++++++
+|  .../8f77fad5e991292306c842f1031a7f4ba9d76cff.md   | 154 +++++++++++++++++
+|  .../9525d7e3d768af3492848e9b8e2ffc52b4c8f74f.webm | Bin 0 -> 67518 bytes
+|  .../96d4618be8b07faa6bfe75f89cb0d9babaacbdef.webm | Bin 0 -> 92288 bytes
+|  .../9819c2d6791dcaeb47686ff82c4ab2e54cd02c7f.md   | 153 +++++++++++++++++
+|  .../99466027deb8e5c253da0dc1cecf42621dc1abb4.png  | Bin 0 -> 18011 bytes
+|  .../9b2d6b6468f48a7394bc2c53c9d5d80518c5e4d0.md   | 153 +++++++++++++++++
+|  .../a198366bc9dea5676b613e8a3dd9e5f4716e88ff.webm | Bin 0 -> 123358 bytes
+|  .../a799a6511a527f76df66675cb09516e81061eff8.zip  | Bin 0 -> 847506 bytes
+|  .../aa951c8a6fb34afe1502b851c22337d36566a532.png  | Bin 0 -> 29077 bytes
+|  .../ad35b9068bbe80309643338f25a76a96863e080c.webm | Bin 0 -> 101115 bytes
+|  .../b080229666136863caf9f6d364bbc0c394ca7898.zip  | Bin 0 -> 257752 bytes
+|  .../b3fc4b44fd68e6484897fb20478ae5e617248c4a.webm | Bin 0 -> 105195 bytes
+|  .../b410b147e561faac4b4a389cd8ef839bf98bf31a.md   | 154 +++++++++++++++++
+|  .../b48210dc628856b1e44c2919b904af1b76b0df3c.md   | 154 +++++++++++++++++
+|  .../be128e57a06e8f7da4194d63b43c2329fdc62a37.webm | Bin 0 -> 105790 bytes
+|  .../bf94badb258988c15fd2c82bea802c0df99593cb.png  | Bin 0 -> 76664 bytes
+|  .../bfa7baebfbe159f420d686a464249ed6413ef8fc.md   | 153 +++++++++++++++++
+|  .../c2d26430c0801cb9af2b3de3935d2aef53a5d103.webm | Bin 0 -> 67518 bytes
+|  .../c33deb5079fd1d82c0c34811e9eb9edec16c64be.webm | Bin 0 -> 109134 bytes
+|  .../c3f95a91585e5bdff04e168eef981fa34d38b4b9.webm | Bin 0 -> 104996 bytes
+|  .../c45ba3e897a9d55620a676aae9632c409ad49b98.zip  | Bin 0 -> 213410 bytes
+|  .../c71a8edd928c0e8946a81962bf9a7eb196398a68.md   | 153 +++++++++++++++++
+|  .../c8ecde63c69de23f50491d0d86f2e30b32ba49a0.zip  | Bin 0 -> 167702 bytes
+|  .../d101e11ba54077e281cb8a1d1be29a370a98a3ac.webm | Bin 0 -> 122395 bytes
+|  .../d5cd1c78cbff4e14cdfcac503006a7512a056e5d.zip  | Bin 0 -> 924352 bytes
+|  .../d6a580e2525d0fd70e861a72a77056cda9b815ef.zip  | Bin 0 -> 121550 bytes
+|  .../d7d59fc98b802bf406713847257716ea5c95fbe3.webm | Bin 0 -> 143009 bytes
+|  .../d8b813b83dfc4880851af485332303c93a40908b.md   | 154 +++++++++++++++++
+|  .../da8900b6f7a5345582089c4cbe78398b84b77938.zip  | Bin 0 -> 213962 bytes
+|  .../dfd8fab39ef1ff361c3cb6057940e4c303e895d9.webm | Bin 0 -> 93422 bytes
+|  .../e3b40f1d03a83858756f745b65640be7b9de388c.zip  | Bin 0 -> 659325 bytes
+|  .../eb5fefdd0431fc9212412ecab997130aaf6b31ff.md   | 153 +++++++++++++++++
+|  .../ece037d119c7aef308ec2f946ec182b5dd4438be.webm | Bin 0 -> 127185 bytes
+|  .../f09bb042075d41a4e846d2258cdb8f80420c6231.webm | Bin 0 -> 102840 bytes
+|  .../f2900f52f0145aa417f1d72cca2b882efacac7f5.zip  | Bin 0 -> 258929 bytes
+|  .../fe47f6fc882ae7fcb811b587dcc40094a08acd67.md   | 153 +++++++++++++++++
+|  reports/fr01/index.html                           |  49 ++++++
+|  .../trace/assets/codeMirrorModule-rXmQmLUY.js     |  32 ++++
+|  .../trace/assets/defaultSettingsView-B-dXF5JN.js  | 181 ++++++++++++++++++++
+|  reports/fr01/trace/assets/urlMatch-L3liM589.js    |   1 +
+|  reports/fr01/trace/codeMirrorModule.-QdMvsKi.css  |   1 +
+|  reports/fr01/trace/codicon.DCmgc-ay.ttf           | Bin 0 -> 80340 bytes
+|  .../fr01/trace/defaultSettingsView.BLFoOugd.css   |   1 +
+|  reports/fr01/trace/index.B_TqY17P.css             |   1 +
+|  reports/fr01/trace/index.KZ4wOW1K.js              |   1 +
+|  reports/fr01/trace/index.html                     |  44 +++++
+|  reports/fr01/trace/manifest.webmanifest           |  16 ++
+|  reports/fr01/trace/playwright-logo.svg            |   9 +
+|  reports/fr01/trace/snapshot.B_Jk1wbt.js           |   1 +
+|  reports/fr01/trace/snapshot.html                  |  10 ++
+|  reports/fr01/trace/sw.bundle.js                   |   4 +
+|  reports/fr01/trace/uiMode.C7UW1sC9.css            |   1 +
+|  reports/fr01/trace/uiMode.Dzuouizj.js             |   5 +
+|  reports/fr01/trace/uiMode.html                    |  18 ++
+|  reports/fr01/trace/xtermModule.kHJ-D0s7.css       |   1 +
+|  tests/specs/fr01-registration.spec.ts             |   7 +
+|  tests/specs/fr11-order-history.spec.ts            |   7 +
+|  tests/specs/fr14-category-management.spec.ts      |   7 +
+|  98 files changed, 3159 insertions(+)
+| 
+* commit 73faecf88a21dc6f7657fdfa7e212ae7a37b0e68
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:40:13 2026 +0700
+| 
+|     test(fr14): add boundary coverage and execution report
+| 
+|  .../056d2396385d09f2f1b52dbb642105a9b7fe8278.zip  | Bin 0 -> 402811 bytes
+|  .../06220cd790642938e5312e8d5ff204b0ac4ff8f6.webm | Bin 0 -> 2369 bytes
+|  .../0a6163edb3a9f6a90732deafa2e3148f33233cc0.zip  | Bin 0 -> 472063 bytes
+|  .../0d0291e4e476de423544f326364c15b9dfc42a47.md   | 296 +++++++++++++++++
+|  .../0e536057edca763712a7a468472fa8d527efcd6d.webm | Bin 0 -> 1954 bytes
+|  .../117b02db9a08caae370524da87b385ab61e62d2a.md   | 227 +++++++++++++
+|  .../11c1f6d1f8297f187e163bd8dce05fbfa678726b.png  | Bin 0 -> 29609 bytes
+|  .../12a2665ff5ae94195e7c84ec46a2dffa2ed89954.zip  | Bin 0 -> 16362 bytes
+|  .../148999d321535d54c9a3e9f6e0a6e3b25a8c8686.png  | Bin 0 -> 85936 bytes
+|  .../149bd4879c2161aed1cd85f323b005d89f99ec37.webm | Bin 0 -> 68075 bytes
+|  .../24beecf9d3fbcab52c518869546975cfe64d2b2d.zip  | Bin 0 -> 221915 bytes
+|  .../2510aca667aeb197d2a62444e064b363330b10e9.webm | Bin 0 -> 1987 bytes
+|  .../2b8d7ddaa1f012890d71bf2cebcef3400c788981.zip  | Bin 0 -> 570834 bytes
+|  .../340309986ae0b1e17eece5ed8e8ad9fd64749d01.webm | Bin 0 -> 76513 bytes
+|  .../35e81e583673ff98c65e0d3adb28d7edc5d017bf.zip  | Bin 0 -> 272067 bytes
+|  .../3760e928c673a0734787cc3223039bd493ddaf84.md   | 207 ++++++++++++
+|  .../3a3eb0640bf7a974d05816239c1538f8b4229c92.webm | Bin 0 -> 2296 bytes
+|  .../3be35c0616e4d6fc3efeca58feb1de338b5e6ac2.png  | Bin 0 -> 36492 bytes
+|  .../40593a4ab0f99c5bf9673e1e7abdb9089e77614d.zip  | Bin 0 -> 231072 bytes
+|  .../4c84001dc8398d061ff96989ee4779a676599915.zip  | Bin 0 -> 17477 bytes
+|  .../58217549873b391656d08d8120afb36a9f0ee506.png  | Bin 0 -> 98807 bytes
+|  .../5bd930e1dbb6e87b227dbd613439cd13b393b89a.zip  | Bin 0 -> 18829 bytes
+|  .../5ecef8b7364a908d8a1acf8b9cac981ef351e730.png  | Bin 0 -> 18139 bytes
+|  .../616af6fea116df3dfd41684f5ecbb1f306346b31.webm | Bin 0 -> 2811 bytes
+|  .../65822a55d13c0f1708da01cadbf25a8bc47e09e8.webm | Bin 0 -> 31275 bytes
+|  .../67128444d26f93c2e7cbade73d182c81ed3b70b6.md   | 272 +++++++++++++++
+|  .../6d367205b6985c8a572a60382d10b66cbaf53539.md   | 185 +++++++++++
+|  .../6d91ffc280106bdac70dd3745490b377227adb0b.zip  | Bin 0 -> 19307 bytes
+|  .../735fd6494a40eeeecb99abb492fbd17e191feac0.webm | Bin 0 -> 60554 bytes
+|  .../74e4af35036070ecd142d79fcda3243c4adebc60.png  | Bin 0 -> 36624 bytes
+|  .../756550f72c26eac6bf249b0b1dbc7946c97e5837.webm | Bin 0 -> 58899 bytes
+|  .../78485ad26ab49de2007fe98b0854715a58aaf5b6.png  | Bin 0 -> 4254 bytes
+|  .../7aac38bbb5bc56b24a06a7d658cb74de2561517e.zip  | Bin 0 -> 15859 bytes
+|  .../7fa91cf83ecc7d4d3edd5a28db3f49bc6355f0e9.zip  | Bin 0 -> 18873 bytes
+|  .../845a99da289d424ba21df15673483a64cddb2113.webm | Bin 0 -> 79686 bytes
+|  .../88a007c030b5a54fe6412b1d72a5265b8b785955.md   | 232 +++++++++++++
+|  .../912bf240a45cb1b093e313ca3383b8a4a4d68f6d.png  | Bin 0 -> 34432 bytes
+|  .../949bb3679b5aea8e64be72c06579f9c2720edfe7.md   | 326 ++++++++++++++++++
+|  .../969b43e5c66639d92fdf1a20f1041a93daf6f20c.md   | 176 ++++++++++
+|  .../9896c66f38faeb5277de8cb26db55cb388605546.png  | Bin 0 -> 96188 bytes
+|  .../a6286b7d624e10b3d999947402e949d80279bd9e.zip  | Bin 0 -> 20312 bytes
+|  .../a65be4113f7f49754666e1ecb0b8ebea07c454e7.webm | Bin 0 -> 1954 bytes
+|  .../b7e0689dd173ddd44b62ec4b723b21e9f83adebe.zip  | Bin 0 -> 272247 bytes
+|  .../bfa85949186fbb072e6deaa5cb6c97dec1668ec1.zip  | Bin 0 -> 228390 bytes
+|  .../c038913cfffdc488aec2059069a573e589794df9.zip  | Bin 0 -> 18725 bytes
+|  .../c12ca56708e64223b9b9f31e7172890facabc122.webm | Bin 0 -> 1954 bytes
+|  .../c2e1a46766a29e7ca3fc40486e1c2dfa4ba5513f.md   | 351 ++++++++++++++++++++
+|  .../cc791c9e39cd0290b063b5881cc8ce1b37f99ec0.md   | 185 +++++++++++
+|  .../ce1be835deef0a4b65cdf8ce9a097b7fb4687485.md   | 222 +++++++++++++
+|  .../d0c5cb432b7998423aa04d543564344e276a2381.png  | Bin 0 -> 33710 bytes
+|  .../d28ae40c71ae55fb9752d863331ea71bcdfaa719.zip  | Bin 0 -> 18198 bytes
+|  .../d7a5eed98f52b3a8ab83bfb6cda4263aac918b89.png  | Bin 0 -> 5212 bytes
+|  .../e329b69ce92d87129cc20dd8fe6451f7ec44fd4d.webm | Bin 0 -> 1954 bytes
+|  .../e347a90a03a52f994ed1228f3e189420645a9560.zip  | Bin 0 -> 258348 bytes
+|  .../e50ad996c14932e3020004bd9458b03f687b3e0b.md   | 212 ++++++++++++
+|  .../e5b9c144c2631169b4d847464503c4f46072eac9.webm | Bin 0 -> 32107 bytes
+|  .../eb75ad93c2d491086f3cd4cb6bde48a743676edb.webm | Bin 0 -> 54762 bytes
+|  .../f1abc3882fd66acd513931e089834c87411477a7.webm | Bin 0 -> 56293 bytes
+|  .../fecf0e30b4ab3b73da83f8dbadd3cd745610f4f0.webm | Bin 0 -> 1954 bytes
+|  reports/fr14/index.html                           |  49 +++
+|  .../trace/assets/codeMirrorModule-rXmQmLUY.js     |  32 ++
+|  .../trace/assets/defaultSettingsView-B-dXF5JN.js  | 181 ++++++++++
+|  reports/fr14/trace/assets/urlMatch-L3liM589.js    |   1 +
+|  reports/fr14/trace/codeMirrorModule.-QdMvsKi.css  |   1 +
+|  reports/fr14/trace/codicon.DCmgc-ay.ttf           | Bin 0 -> 80340 bytes
+|  .../fr14/trace/defaultSettingsView.BLFoOugd.css   |   1 +
+|  reports/fr14/trace/index.B_TqY17P.css             |   1 +
+|  reports/fr14/trace/index.KZ4wOW1K.js              |   1 +
+|  reports/fr14/trace/index.html                     |  44 +++
+|  reports/fr14/trace/manifest.webmanifest           |  16 +
+|  reports/fr14/trace/playwright-logo.svg            |   9 +
+|  reports/fr14/trace/snapshot.B_Jk1wbt.js           |   1 +
+|  reports/fr14/trace/snapshot.html                  |  10 +
+|  reports/fr14/trace/sw.bundle.js                   |   4 +
+|  reports/fr14/trace/uiMode.C7UW1sC9.css            |   1 +
+|  reports/fr14/trace/uiMode.Dzuouizj.js             |   5 +
+|  reports/fr14/trace/uiMode.html                    |  18 +
+|  reports/fr14/trace/xtermModule.kHJ-D0s7.css       |   1 +
+|  tests/data/categories.json                        |  18 +
+|  tests/specs/fr14-category-management.spec.ts      |  30 +-
+|  80 files changed, 3314 insertions(+), 1 deletion(-)
+| 
+* commit fb04aed306c8930edd9836193f827337bb608b33
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:38:25 2026 +0700
+| 
+|     test(fr14): expose category validation and deletion defects
+| 
+|  tests/data/categories.json                   | 35 ++++++++++++++++++
+|  tests/specs/fr14-category-management.spec.ts | 51 +++++++++++++++++++++++++-
+|  tests/support/eshop-api.ts                   | 18 +++++++++
+|  3 files changed, 103 insertions(+), 1 deletion(-)
+| 
+* commit b94db6691da7f0ca19c797cd440b0823d169afc4
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:36:54 2026 +0700
+| 
+|     test(fr14): cover category access and core operations
+| 
+|  tests/data/categories.json                   | 26 ++++++++
+|  tests/pages/category-management.page.ts      | 70 ++++++++++++++++++++++
+|  tests/specs/fr14-category-management.spec.ts | 82 ++++++++++++++++++++++++++
+|  tests/support/eshop-api.ts                   | 23 ++++++++
+|  4 files changed, 201 insertions(+)
+| 
+* commit 57297dfe2c8ec929ae7a899e42da959500700172
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:34:22 2026 +0700
+| 
+|     test(fr11): add boundary coverage and execution report
+| 
+|  .../06c1f479d66ca278ba5738891b9bc0b19e8e5579.webm | Bin 0 -> 123428 bytes
+|  .../0dc1e5d3f390a830c148bf812cbe2db166f5ec7b.md   | 186 ++++++++++++++++++++
+|  .../1444ec1b32858eb29ad4ed7fa22b271fe1c92f4a.webm | Bin 0 -> 126716 bytes
+|  .../3c370a1eebb8736de168776c92b17a8f2d5cbf64.md   | 186 ++++++++++++++++++++
+|  .../4fb17d0b2e356d86291e8a0f89633176a38a9ab2.md   | 186 ++++++++++++++++++++
+|  .../544cf19754c109f8532a9b2c3fa0d6f4a22c54e0.zip  | Bin 0 -> 1215281 bytes
+|  .../830d94697cfea1e55bc1628a1852dd71ea92c9ab.png  | Bin 0 -> 35880 bytes
+|  .../94a02a3ad3b25c93c422be48199ae4ee05477c69.zip  | Bin 0 -> 271886 bytes
+|  .../9b6d6a543d7301e96cc1a8145a8a19c5b6dd87d2.png  | Bin 0 -> 99284 bytes
+|  .../a0b999a6d293126798651d464cd4b8aee32da1b9.webm | Bin 0 -> 140014 bytes
+|  .../a74856c08ff840b20119ba7205f9d7084c62cab5.png  | Bin 0 -> 40257 bytes
+|  .../f298d81844801c9a76aee0def9084a0738d4900b.zip  | Bin 0 -> 233668 bytes
+|  reports/fr11/index.html                           |  49 ++++++
+|  .../trace/assets/codeMirrorModule-rXmQmLUY.js     |  32 ++++
+|  .../trace/assets/defaultSettingsView-B-dXF5JN.js  | 181 +++++++++++++++++++
+|  reports/fr11/trace/assets/urlMatch-L3liM589.js    |   1 +
+|  reports/fr11/trace/codeMirrorModule.-QdMvsKi.css  |   1 +
+|  reports/fr11/trace/codicon.DCmgc-ay.ttf           | Bin 0 -> 80340 bytes
+|  .../fr11/trace/defaultSettingsView.BLFoOugd.css   |   1 +
+|  reports/fr11/trace/index.B_TqY17P.css             |   1 +
+|  reports/fr11/trace/index.KZ4wOW1K.js              |   1 +
+|  reports/fr11/trace/index.html                     |  44 +++++
+|  reports/fr11/trace/manifest.webmanifest           |  16 ++
+|  reports/fr11/trace/playwright-logo.svg            |   9 +
+|  reports/fr11/trace/snapshot.B_Jk1wbt.js           |   1 +
+|  reports/fr11/trace/snapshot.html                  |  10 ++
+|  reports/fr11/trace/sw.bundle.js                   |   4 +
+|  reports/fr11/trace/uiMode.C7UW1sC9.css            |   1 +
+|  reports/fr11/trace/uiMode.Dzuouizj.js             |   5 +
+|  reports/fr11/trace/uiMode.html                    |  18 ++
+|  reports/fr11/trace/xtermModule.kHJ-D0s7.css       |   1 +
+|  tests/data/order-history.json                     |  29 +++
+|  tests/specs/fr11-order-history.spec.ts            |  48 ++++-
+|  33 files changed, 1010 insertions(+), 1 deletion(-)
+| 
+* commit bc0b6c8cb4995e2d0e1a1b27fa8271bf78aaf82d
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:31:59 2026 +0700
+| 
+|     test(fr11): verify order statuses and currency format
+| 
+|  tests/data/order-history.json          | 47 +++++++++++++++++++++++++++
+|  tests/specs/fr11-order-history.spec.ts | 55 +++++++++++++++++++++++++++++++-
+|  tests/support/eshop-api.ts             | 37 +++++++++++++++++++++
+|  3 files changed, 138 insertions(+), 1 deletion(-)
+| 
+* commit 570603f5a6afb79838770a727140f483c53f39cb
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:30:34 2026 +0700
+| 
+|     test(fr11): cover order history access and isolation
+| 
+|  tests/data/order-history.json          | 25 ++++++++++
+|  tests/pages/order-history.page.ts      | 44 ++++++++++++++++++
+|  tests/specs/fr11-order-history.spec.ts | 78 ++++++++++++++++++++++++++++++++
+|  tests/support/eshop-api.ts             | 66 +++++++++++++++++++++++++++
+|  4 files changed, 213 insertions(+)
+| 
+* commit 4d4fdd2acecd14660302fb196c40ee337369b488
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 19:01:09 2026 +0700
+| 
+|     test(fr01): add data-driven registration automation
+| 
+|  .gitignore                            |  6 ++
+|  package-lock.json                     | 78 ++++++++++++++++++++++++++
+|  package.json                          | 17 ++++++
+|  playwright.config.ts                  | 75 +++++++++++++++++++++++++
+|  tests/data/registration.json          | 98 +++++++++++++++++++++++++++++++++
+|  tests/pages/registration.page.ts      | 35 ++++++++++++
+|  tests/specs/fr01-registration.spec.ts | 87 +++++++++++++++++++++++++++++
+|  7 files changed, 396 insertions(+)
+| 
+* commit 4d299c3d4dd6f87d22d91cfa491e4999e766fadc
+| Author: minhluan <luanthuco11@gmail.com>
+| Date:   Fri Aug 14 18:39:23 2026 +0700
+| 
+|     init repo
+| 
+|  2026.HW04.Automation Testing_En.pdf       |  Bin 0 -> 463412 bytes
+|  ESHOP_README.md                           |  288 +
+|  api_specification.md                      |  214 +
+|  backend/database.js                       |  119 +
+|  backend/database.sqlite                   |  Bin 0 -> 36864 bytes
+|  backend/package-lock.json                 | 1663 +++++
+|  backend/package.json                      |   20 +
+|  backend/server.js                         |  572 ++
+|  backend/test_profile.js                   |    8 +
+|  frontend-admin/.gitignore                 |   24 +
+|  frontend-admin/README.md                  |   16 +
+|  frontend-admin/eslint.config.js           |   21 +
+|  frontend-admin/index.html                 |   13 +
+|  frontend-admin/package-lock.json          | 3681 +++++++++++
+|  frontend-admin/package.json               |   32 +
+|  frontend-admin/postcss.config.js          |    6 +
+|  frontend-admin/public/favicon.svg         |    1 +
+|  frontend-admin/public/icons.svg           |   24 +
+|  frontend-admin/src/App.css                |  184 +
+|  frontend-admin/src/App.jsx                |  922 +++
+|  frontend-admin/src/assets/hero.png        |  Bin 0 -> 13057 bytes
+|  frontend-admin/src/assets/react.svg       |    1 +
+|  frontend-admin/src/assets/vite.svg        |    1 +
+|  frontend-admin/src/index.css              |    8 +
+|  frontend-admin/src/main.jsx               |   10 +
+|  frontend-admin/tailwind.config.js         |   11 +
+|  frontend-admin/vite.config.js             |   11 +
+|  frontend-mobile/.gitignore                |   41 +
+|  frontend-mobile/App.js                    | 1300 ++++
+|  frontend-mobile/app.json                  |   29 +
+|  frontend-mobile/assets/adaptive-icon.png  |  Bin 0 -> 17547 bytes
+|  frontend-mobile/assets/favicon.png        |  Bin 0 -> 1466 bytes
+|  frontend-mobile/assets/icon.png           |  Bin 0 -> 22380 bytes
+|  frontend-mobile/assets/splash-icon.png    |  Bin 0 -> 17547 bytes
+|  frontend-mobile/index.js                  |    8 +
+|  frontend-mobile/package-lock.json         | 8773 +++++++++++++++++++++++++++
+|  frontend-mobile/package.json              |   18 +
+|  frontend-web/.gitignore                   |   24 +
+|  frontend-web/README.md                    |   16 +
+|  frontend-web/eslint.config.js             |   21 +
+|  frontend-web/index.html                   |   13 +
+|  frontend-web/package-lock.json            | 3681 +++++++++++
+|  frontend-web/package.json                 |   32 +
+|  frontend-web/postcss.config.js            |    6 +
+|  frontend-web/public/favicon.svg           |    1 +
+|  frontend-web/public/icons.svg             |   24 +
+|  frontend-web/src/App.css                  |  184 +
+|  frontend-web/src/App.jsx                  |   71 +
+|  frontend-web/src/assets/hero.png          |  Bin 0 -> 13057 bytes
+|  frontend-web/src/assets/react.svg         |    1 +
+|  frontend-web/src/assets/vite.svg          |    1 +
+|  frontend-web/src/context/AuthContext.jsx  |   50 +
+|  frontend-web/src/context/CartContext.jsx  |   36 +
+|  frontend-web/src/index.css                |   14 +
+|  frontend-web/src/main.jsx                 |   10 +
+|  frontend-web/src/pages/Cart.jsx           |   79 +
+|  frontend-web/src/pages/Checkout.jsx       |  151 +
+|  frontend-web/src/pages/ForgotPassword.jsx |  100 +
+|  frontend-web/src/pages/Home.jsx           |  116 +
+|  frontend-web/src/pages/Login.jsx          |   69 +
+|  frontend-web/src/pages/ProductDetail.jsx  |   73 +
+|  frontend-web/src/pages/Profile.jsx        |  217 +
+|  frontend-web/src/pages/Register.jsx       |   83 +
+|  frontend-web/tailwind.config.js           |   11 +
+|  frontend-web/vite.config.js               |    7 +
+|  run_servers.sh                            |    5 +
+|  setup_guide.md                            |  117 +
+|  67 files changed, 23232 insertions(+)
+| 
+* commit edd5c1aba9724393f811ce9bbc361adef9d80f66
+  Author: minhluan <luanthuco11@gmail.com>
+  Date:   Fri Aug 14 18:28:51 2026 +0700
+  
+      first commit
+  
+   README.md | 1 +
+   1 file changed, 1 insertion(+)

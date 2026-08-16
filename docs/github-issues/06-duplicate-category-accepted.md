@@ -1,29 +1,29 @@
-## Feature
+## Chức năng
 
-FR-14 – Category management
+FR-14 – Quản lý danh mục
 
-## Severity
+## Mức độ
 
-Medium
+Trung bình
 
-## Related test
+## Test liên quan
 
 `TC_CAT_08`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Log in as an administrator.
-2. Create a category.
-3. Submit the same category name again.
+1. Đăng nhập bằng tài khoản admin.
+2. Tạo một danh mục.
+3. Gửi lại cùng tên danh mục.
 
-## Expected result
+## Kết quả mong đợi
 
-The API returns HTTP 409 or the UI displays a duplicate-name validation message.
+API trả về HTTP 409 hoặc giao diện hiển thị thông báo validation tên trùng.
 
-## Actual result
+## Kết quả thực tế
 
-The API returns HTTP 200 and creates a second category with the same name.
+API trả về HTTP 200 và tạo danh mục thứ hai có cùng tên.
 
-## Evidence
+## Bằng chứng
 
-![FR-14 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)
+![Playwright report FR-14](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr14-report-summary.png)

@@ -1,30 +1,30 @@
-## Feature
+## Chức năng
 
-FR-01 – Account registration
+FR-01 – Đăng ký tài khoản
 
-## Severity
+## Mức độ
 
-High
+Cao
 
-## Related tests
+## Test liên quan
 
 `TC_REG_01`, `TC_BVA_01`
 
-## Steps to reproduce
+## Các bước tái hiện
 
-1. Open the registration page.
-2. Enter a valid name and email.
-3. Enter `Pass123!` or boundary value `Abc1234!`.
-4. Submit the form.
+1. Mở trang đăng ký.
+2. Nhập tên và email hợp lệ.
+3. Nhập `Pass123!` hoặc giá trị biên `Abc1234!`.
+4. Gửi form.
 
-## Expected result
+## Kết quả mong đợi
 
-Registration succeeds and redirects to the login page.
+Đăng ký thành công và chuyển đến trang đăng nhập.
 
-## Actual result
+## Kết quả thực tế
 
-The UI reports a weak password. The password validation regex requires whitespace (`\s`) instead of a special character.
+Giao diện báo mật khẩu yếu. Regex validation mật khẩu yêu cầu khoảng trắng (`\s`) thay cho ký tự đặc biệt.
 
-## Evidence
+## Bằng chứng
 
-![FR-01 Playwright report](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr01-report-summary.png)
+![Playwright report FR-01](https://raw.githubusercontent.com/luanthuco11/23KTPM4-KTPM-HW4/main/docs/bug-evidence/fr01-report-summary.png)
